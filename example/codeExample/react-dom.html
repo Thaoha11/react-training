@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script>
+        const postItem = React.createElement(
+            'div',
+            {
+                className: 'post-item'
+            },
+            React.createElement(
+                'h2',
+                {
+                    title: 'Hoc rect'
+                },
+                'ReactJS'
+            ),
+            React.createElement('p', {}, 'Hello World')
+
+        )
+
+        // Get root element
+        const container = document.getElementById('root')
+
+        // React@17
+        // React-DOM ->render UI 
+        // ReactDOM.render(postItem, root)
+
+        // React@18
+        const root = ReactDOM.createRoot(container)
+        root.render(postItem)
+
+    </script>
+</body>
+
+</html>
