@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const todos = [
+            {
+                "id": "1655112467300",
+                "text": "fdhsdf",
+                "complete": false
+            },
+            {
+                "id": "1655112467990",
+                "text": "dghsdf",
+                "complete": false
+            },
+            {
+                "id": "1655193455069",
+                "text": "ằá",
+                "complete": false
+            },
+            {
+                "id": "1655193480163",
+                "text": "sàsd",
+                "complete": false
+            }
+        ]
+        const CourseItem = ({ todo }) => (
+
+            <div className='post-item'>
+                <span >{todo.id}</span>
+                <h2 className='post-title'> {todo.text} </h2>
+
+            </div>
+
+        )
+
+
+
+        // app.js
+        function App() {
+            return (
+                <div>
+                    {todos.map(todo => {
+                        <CourseItem
+                            key={todo.id}
+                            todo={todo}
+                        />
+                    })}
+                </div>
+            )
+        }
+        const container = document.getElementById('root')
+        const root = ReactDOM.createRoot(container)
+        root.render(<App />)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+
+        function PostList(props) {
+
+            return (
+                <div className='posts-list'>
+                    <div className='post-item'>
+                        <img src={props.image} />
+                        <h2 className='post-title'> {props.title} </h2>
+                        <p className='post-desc'>{props.description}</p>
+                    </div>
+                </div>
+            )
+
+        }
+
+        // app.js
+        function App() {
+            return (
+                <div id='wrapper'>
+                    <PostList
+                        image="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/15/photo-1-16552607694831570929112.jpg"
+                        title="Bài trí không gian sống tiện nghi trong căn nhà nhỏ hẹp chỉ 50m2 "
+                        description="Mặc dù diện tích tương đối nhỏ hẹp, ngôi nhà vẫn đảm bảo thoáng mát, ánh sáng tự nhiên cân bằng và không gian sống tiện nghi."
+                    />
+                    <PostList
+                        image="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/15/photo-1-16552607694831570929112.jpg"
+                        title=" căn nhà nhỏ hẹp chỉ 50m2 "
+                        description=" ngôi nhà vẫn đảm bảo thoáng mát, ánh sáng tự nhiên cân bằng và không gian sống tiện nghi."
+                    />
+                    <PostList
+                        image="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/15/photo-1-16552607694831570929112.jpg"
+                        title="Bài trí không gian sống tiện nghi trong căn nhà nhỏ hẹp chỉ 50m2 "
+                        description="Mặc dù diện tích tương đối nhỏ hẹps ánh sáng tự nhiên cân bằng và không gian sống tiện nghi."
+                    />
+                </div>
+            )
+        }
+        const container = document.getElementById('root')
+        const root = ReactDOM.createRoot(container)
+        root.render(<App />)
+    </script>
+</body>
+
+</html>
