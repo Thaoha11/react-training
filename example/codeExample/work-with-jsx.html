@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // function Button({ title, href, onClick }) {
+        //     let Component = 'button'
+        //     const props = {}
+
+        //     if (href) {
+        //         Component = 'a'
+        //         props.href = href
+        //     }
+
+        //     if (onClick) {
+        //         props.onClick = onClick
+        //     }
+
+        //     return (
+        //         <Component {...props}> {title}</Component>)
+        // }
+
+
+        // // app.js
+        // function App() {
+
+
+        //     return (
+        //         <div>
+        //             <Button title='Click me!'
+        //                 href='https://www.youtube.com/watch?v=5SU6P-cqoJw&list=PL_-VfJajZj0UXjlKfBwFX73usByw3Ph9Q&index=19'
+        //                 onClick={() => console.log(Math.random())}
+        //             />
+
+
+        //         </div>
+
+        //     )
+        // }
+
+
+        // Rest/spread props
+        // function Input({ label, ...inputProps }) {
+        //     return (
+        //         <div>
+        //             <label>{label}</label>
+        //             <input {...inputProps} />
+        //         </div>
+        //     )
+        // }
+
+        // function App() {
+        //     return (
+        //         <div>
+        //             <Input
+        //                 label='Full Name'
+        //                 type='text'
+        //                 placeholder='Entern Name...'
+        //                 title='input'
+        //                 onFocus={() => {
+        //                     console.log(Math.random())
+        //                 }}
+        //             />
+        //         </div>
+        //     )
+        // }
+
+        // render props
+        function List({ data, children }) {
+            return (
+                <ul >
+                    {data.map((...props) => children(...props))}
+                </ul>
+
+            )
+        }
+
+        function App() {
+            const cars = ['BMW', 'Merc', 'Audi']
+            return (
+                <div>
+
+                    <List data={cars}>
+                        {(item, index) => <li key={index}>{item} </li>}
+                    </List>
+
+                </div>
+            )
+        }
+
+        const container = document.getElementById('root')
+        const root = ReactDOM.createRoot(container)
+        root.render(<App />)
+    </script>
+</body>
+
+</html>
