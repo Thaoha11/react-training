@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Content from './Content'
 // const orders = [200, 100, 300]
 // function App() {
 
@@ -103,43 +103,58 @@ import { useState } from 'react'
 
 /** Todo List */
 
+// function App() {
+//   const [job, setJob] = useState('')
+//   const [jobs, setJobs] = useState(() => {
+//     const storageJobs = JSON.parse(localStorage.getItem('jobs'))
+//     console.log(storageJobs)
+
+//     return storageJobs ?? []
+//   })
+
+//   const handleSubmit = () => {
+//     setJobs(prev => {
+//       const newJobs = [...prev, job]
+
+//       // Save to localStorage
+//       const jsonJobs = JSON.stringify(newJobs)
+//       localStorage.setItem('jobs', jsonJobs)
+
+//       return newJobs
+//     })
+//     setJob('')
+//   }
+//   return (
+//     <div className='app' style={{ padding: 20 }}>
+//       <input
+//         value={job}
+//         onChange={e => setJob(e.target.value)}
+//       />
+//       <button onClick={handleSubmit}>Add</button>
+
+//       <ul>
+//         {jobs.map((job, index) => (
+//           <li key={index}> {job} </li>
+//         ))}
+//       </ul>
+
+//     </div>
+
+//   )
+// }
+
+/** Mounted & Unmounted */
+
 function App() {
-  const [job, setJob] = useState('')
-  const [jobs, setJobs] = useState(() => {
-    const storageJobs = JSON.parse(localStorage.getItem('jobs'))
-    console.log(storageJobs)
-    return storageJobs ?? []
-  })
+  const [show, setShow] = useState(false)
 
-  const handleSubmit = () => {
-    setJobs(prev => {
-      const newJobs = [...prev, job]
-
-      // Save to localStorage
-      const jsonJobs = JSON.stringify(newJobs)
-      localStorage.setItem('jobs', jsonJobs)
-
-      return newJobs
-    })
-    setJob('')
-  }
   return (
     <div className='app' style={{ padding: 20 }}>
-      <input
-        value={job}
-        onChange={e => setJob(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Add</button>
-
-      <ul>
-        {jobs.map((job, index) => (
-          <li key={index}> {job} </li>
-        ))}
-      </ul>
-
+      <button onClick={() => setShow(!show)}> Toggle</button>
+      {show && <Content />}
     </div>
-
   )
 }
+
 
 export default App;
