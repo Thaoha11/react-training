@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Content from './Content'
+
+// =============useState=====================
+
 // const orders = [200, 100, 300]
 // function App() {
 
@@ -145,16 +148,30 @@ import Content from './Content'
 
 /** Mounted & Unmounted */
 
-function App() {
-  const [show, setShow] = useState(false)
+// function App() {
+//   const [show, setShow] = useState(false)
 
+//   return (
+//     <div className='app' style={{ padding: 20 }}>
+//       <button onClick={() => setShow(!show)}> Toggle</button>
+//       {show && <Content />}
+//     </div>
+//   )
+// }
+
+// ===============useCallback================
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  const handleIncrease = useCallback(() => {
+    setCount(prevCount => prevCount + 1)
+  }, [])
   return (
     <div className='app' style={{ padding: 20 }}>
-      <button onClick={() => setShow(!show)}> Toggle</button>
-      {show && <Content />}
+      <h1>{count}</h1>
+      <Content onIncrease={handleIncrease} />
     </div>
   )
 }
-
-
 export default App;

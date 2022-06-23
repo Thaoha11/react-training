@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState, memo } from "react"
 
 // const tabs = ['posts', 'comments', 'albums']
 // function Content() {
@@ -82,33 +82,77 @@ import { useEffect, useState } from "react"
 
 /** preview avatar */
 
-function Content() {
-    const [avatar, setAvatar] = useState()
+// function Content() {
+//     const [avatar, setAvatar] = useState()
 
-    useEffect(() => {
-        return () => {
-            avatar && URL.revokeObjectURL(avatar.preview)
-        }
-    }, [avatar])
-    const handlePreviewAvatar = (e) => {
-        const file = e.target.files[0]
-        file.preview = URL.createObjectURL(file)
+//     useEffect(() => {
+//         return () => {
+//             avatar && URL.revokeObjectURL(avatar.preview)
+//         }
+//     }, [avatar])
+//     const handlePreviewAvatar = (e) => {
+//         const file = e.target.files[0]
+//         file.preview = URL.createObjectURL(file)
 
-        setAvatar(file)
-    }
+//         setAvatar(file)
+//     }
+//     return (
+//         <div>
+//             <input
+//                 type='file'
+//                 onChange={handlePreviewAvatar}
+
+//             />
+//             {avatar && (
+//                 <img src={avatar.preview} width='80%' />
+//             )}
+
+//         </div>
+//     )
+// }
+
+
+// ============useRef================
+
+// function Content() {
+//     const [count, setCount] = useState(60)
+//     const timerID = useRef()
+//     const prevCount = useRef()
+
+//     useEffect(() => {
+//         prevCount.current = count
+//     }, [count])
+
+//     const handleStart = () => {
+//         timerID.current = setInterval(() => {
+//             setCount(prevCount => prevCount - 1)
+//         }, 1000)
+
+
+//     }
+
+//     const handleStop = () => {
+//         clearInterval(timerID.current)
+
+//     }
+
+//     console.log(count, prevCount.current)
+//     return (
+//         <div >
+//             <h1>{count}</h1>
+//             <button onClick={handleStart}>Start</button>
+//             <button onClick={handleStop}>Stop</button>
+//         </div>
+//     )
+// }
+
+// ==========memo=============
+
+function Content({ onIncrease }) {
+    console.log('re-render')
     return (
-        <div>
-            <input
-                type='file'
-                onChange={handlePreviewAvatar}
 
-            />
-            {avatar && (
-                <img src={avatar.preview} width='80%' />
-            )}
-
-        </div>
+        <button onClick={onIncrease}>Click me!!</button>
     )
 }
-
-export default Content
+export default memo(Content)
