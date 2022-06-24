@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import Content from './Content'
 
 // =============useState=====================
@@ -161,17 +161,71 @@ import Content from './Content'
 
 // ===============useCallback================
 
-function App() {
-  const [count, setCount] = useState(0)
+// function App() {
+//   const [count, setCount] = useState(0)
 
-  const handleIncrease = useCallback(() => {
-    setCount(prevCount => prevCount + 1)
-  }, [])
+//   const handleIncrease = useCallback(() => {
+//     setCount(prevCount => prevCount + 1)
+//   }, [])
+//   return (
+//     <div className='app' style={{ padding: 20 }}>
+//       <h1>{count}</h1>
+//       <Content onIncrease={handleIncrease} />
+//     </div>
+//   )
+// }
+
+// ==================useMemo===============
+
+function App() {
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [products, setProducts] = useState([])
+  const nameRef = useRef()
+
+  const handelSubmit = () => {
+    setProducts([...products, {
+      name,
+      price: +price
+    }])
+    setName('')
+    setPrice('')
+    nameRef.current.focus()
+  }
+
+  const total = useMemo(() => {
+    const result = products.reduce((result, prod) => {
+      console.log('tinh toan lai')
+      console.log(products)
+      return result + prod.price
+    }, 0)
+
+    return result
+  }, [products])
   return (
-    <div className='app' style={{ padding: 20 }}>
-      <h1>{count}</h1>
-      <Content onIncrease={handleIncrease} />
-    </div>
+    <>
+      <input
+        ref={nameRef}
+        placeholder='Enter name'
+        value={name}
+        onChange={e => setName(e.target.value)}
+      />
+      <br />
+      <input
+        placeholder='Enter price'
+        value={price}
+        onChange={e => setPrice(e.target.value)}
+      />
+      <br />
+      <button onClick={handelSubmit}>Add</button>
+      <br />
+      Total :{total}
+      <ul>
+        {products.map((product, index) => (
+          <li key={index}>{product.name}-{product.price}</li>
+        ))}
+      </ul>
+    </>
   )
 }
 export default App;
