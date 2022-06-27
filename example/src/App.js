@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import Content from './Content'
-
+import UseReducer from './useReducer'
 // =============useState=====================
 
 // const orders = [200, 100, 300]
@@ -178,33 +178,34 @@ import Content from './Content'
 // ==================useMemo===============
 
 function App() {
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [products, setProducts] = useState([])
-  const nameRef = useRef()
+  // const [name, setName] = useState('')
+  // const [price, setPrice] = useState('')
+  // const [products, setProducts] = useState([])
+  // const nameRef = useRef()
 
-  const handelSubmit = () => {
-    setProducts([...products, {
-      name,
-      price: +price
-    }])
-    setName('')
-    setPrice('')
-    nameRef.current.focus()
-  }
+  // const handelSubmit = () => {
+  //   setProducts([...products, {
+  //     name,
+  //     price: +price
+  //   }])
+  //   setName('')
+  //   setPrice('')
+  //   nameRef.current.focus()
+  // }
 
-  const total = useMemo(() => {
-    const result = products.reduce((result, prod) => {
-      console.log('tinh toan lai')
-      console.log(products)
-      return result + prod.price
-    }, 0)
 
-    return result
-  }, [products])
+  // const total = useMemo(() => {
+  //   const result = products.reduce((result, prod) => {
+  //     console.log('tinh toan lai')
+
+  //     return result + prod.price
+  //   }, 0)
+
+  //   return result
+  // }, [products])
   return (
     <>
-      <input
+      {/* <input
         ref={nameRef}
         placeholder='Enter name'
         value={name}
@@ -224,7 +225,9 @@ function App() {
         {products.map((product, index) => (
           <li key={index}>{product.name}-{product.price}</li>
         ))}
-      </ul>
+      </ul> */}
+
+      <UseReducer />
     </>
   )
 }
