@@ -1,6 +1,10 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
-import Content from './Content'
-import UseReducer from './useReducer'
+// import { useCallback, useMemo, useRef, useState } from 'react'
+// import Content from './Content'
+// import UseReducer from './useReducer'
+import { useRef } from 'react'
+import Video from './Video'
+
+
 // =============useState=====================
 
 // const orders = [200, 100, 300]
@@ -177,35 +181,35 @@ import UseReducer from './useReducer'
 
 // ==================useMemo===============
 
-function App() {
-  // const [name, setName] = useState('')
-  // const [price, setPrice] = useState('')
-  // const [products, setProducts] = useState([])
-  // const nameRef = useRef()
+// function App() {
+// const [name, setName] = useState('')
+// const [price, setPrice] = useState('')
+// const [products, setProducts] = useState([])
+// const nameRef = useRef()
 
-  // const handelSubmit = () => {
-  //   setProducts([...products, {
-  //     name,
-  //     price: +price
-  //   }])
-  //   setName('')
-  //   setPrice('')
-  //   nameRef.current.focus()
-  // }
+// const handelSubmit = () => {
+//   setProducts([...products, {
+//     name,
+//     price: +price
+//   }])
+//   setName('')
+//   setPrice('')
+//   nameRef.current.focus()
+// }
 
 
-  // const total = useMemo(() => {
-  //   const result = products.reduce((result, prod) => {
-  //     console.log('tinh toan lai')
+// const total = useMemo(() => {
+//   const result = products.reduce((result, prod) => {
+//     console.log('tinh toan lai')
 
-  //     return result + prod.price
-  //   }, 0)
+//     return result + prod.price
+//   }, 0)
 
-  //   return result
-  // }, [products])
-  return (
-    <>
-      {/* <input
+//   return result
+// }, [products])
+// return (
+//   <>
+{/* <input
         ref={nameRef}
         placeholder='Enter name'
         value={name}
@@ -227,8 +231,29 @@ function App() {
         ))}
       </ul> */}
 
-      <UseReducer />
+//       <UseReducer />
+//     </>
+//   )
+// }
+// export default App;
+
+//  =============useImperativeHandle()============
+
+function App() {
+  const videoRef = useRef()
+
+  const handlePlay = () => {
+    videoRef.current.play()
+  }
+  const handlePause = () => {
+    videoRef.current.pause()
+  }
+  return (
+    <>
+      <Video ref={videoRef} />
+      <button onClick={handlePlay}>Play</button>
+      <button onClick={handlePause}>Pause</button>
     </>
   )
 }
-export default App;
+export default App

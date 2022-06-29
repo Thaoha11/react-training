@@ -2,18 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { ThemeProvider } from './ThemeContext'
-import AppUseContext from './App_useContext'
+// import { ThemeProvider } from './ThemeContext'
+// import AppUseContext from './App_useContext'
+// import AppGlobal from './AppGlobal';
+// import { StoreProvider } from './store';
+
 import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <ThemeProvider>
+    <App />
+    {/* <ThemeProvider>
       <AppUseContext />
-    </ThemeProvider>
+    </ThemeProvider> */}
+    {/* <StoreProvider>
+      <AppGlobal />
+    </StoreProvider> */}
   </React.StrictMode>
 );
 
