@@ -1,0 +1,13 @@
+.btn {
+    width: 100px;
+    background-color: blueviolet;
+    color: black;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+.primary {
+
+    background-color: #007bfe;
+}

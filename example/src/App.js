@@ -1,9 +1,14 @@
 // import { useCallback, useMemo, useRef, useState } from 'react'
 // import Content from './Content'
 // import UseReducer from './useReducer'
+import { Routes, Route, Link } from 'react-router-dom'
+
 import { useRef } from 'react'
 import Video from './Video'
-
+import Button from './Button'
+import Homepage from './page/Homepage'
+import NewsPage from './page/NewsPage'
+import ContactPage from './page/ContactPage'
 
 // =============useState=====================
 
@@ -253,6 +258,29 @@ function App() {
       <Video ref={videoRef} />
       <button onClick={handlePlay}>Play</button>
       <button onClick={handlePause}>Pause</button>
+
+      <Button />
+      <Button primary />
+
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/news'>News</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/news' element={<NewsPage />} />
+        <Route path='/contact' element={<ContactPage />} />
+      </Routes>
     </>
   )
 }

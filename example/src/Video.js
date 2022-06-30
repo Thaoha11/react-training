@@ -14,11 +14,15 @@ function Video(props, ref) {
     }))
 
     return (
-        <video
-            ref={videoRef}
-            src={video}
-            width={280}
-        />
+        <>
+            <video
+                ref={videoRef}
+                src={video}
+                width={280}
+            />
+
+        </>
+
     )
 }
 export default forwardRef(Video)
