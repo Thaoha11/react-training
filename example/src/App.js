@@ -2,10 +2,11 @@
 // import Content from './Content'
 // import UseReducer from './useReducer'
 import { Routes, Route, Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 import { useRef } from 'react'
 import Video from './Video'
-import Button from './Button'
+// import Button from './Button'
 import Homepage from './page/Homepage'
 import NewsPage from './page/NewsPage'
 import ContactPage from './page/ContactPage'
@@ -253,15 +254,52 @@ function App() {
   const handlePause = () => {
     videoRef.current.pause()
   }
+
+  // ===========Styled component===============
+
+  const Title = styled.h1`
+  color: palevioletred;
+  font-size: 3em;
+  border: 2px solid palevioletred;
+  `
+  const Tomato = styled(Title)`
+  color: tomato;
+  border-color: tomato;
+  `
+  const Button = styled.button`
+  background: ${props => props.primary ? "palevioletred" : "white"};
+  color: ${props => props.primary ? "white" : "palevioletred"};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  `
+  const ReversedButton = props => <Button {...props} children=
+    {props.children.split('').reverse()} />
+
+  const Input = styled.input`
+    padding: 0.5em;
+    margin: 0.5em;
+    color: ${props => props.inputColor || "palevioletred"};
+    background: papayawhip;
+    border: none;
+    border-radius: 3px;
+  `;
   return (
     <>
       <Video ref={videoRef} />
       <button onClick={handlePlay}>Play</button>
       <button onClick={handlePause}>Pause</button>
 
-      <Button />
-      <Button primary />
+      <Title>hello World</Title>
+      <Tomato>React training</Tomato>
 
+      <Button as='a' href='#'> Normal</Button >
+      <Button primary as={ReversedButton}>primary</Button>
+      <Input defaultValue="@probablyup" type="text" />
+      <Input defaultValue="@geelen" type="text" inputColor="rebeccapurple" />
       <nav>
         <ul>
           <li>
