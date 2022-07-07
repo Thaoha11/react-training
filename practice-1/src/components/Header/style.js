@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 const SectionBackGroundStyles = styled.div`
-  position: fixed;  
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: #A0BCC2;
+    position: fixed;  
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #A0BCC2;
   
 `
 
@@ -17,35 +17,48 @@ const Wrapper = styled.div`
 const Title = styled.h1`
     text-align: center;
     font-family: 'Inter';
+    padding-bottom: 20px;
+`
+const AddNew = styled.p`
+    font-size :16px;
+    font-family: 'Inter';
+    margin-bottom: 2px;
 `
 
+
+
 const ButtonAdd = styled.button`
-    background: #DAE5D0;
-    border-radius: 50px;
+    background: bottom;
     border:none;
-    width: 134px;
-    height: 48px;
-    font-family: 'Inter';
-    font-size: 16px;
     cursor: pointer;
+    font-size :22px;
 `
 const Content = styled.div`
     font-family: 'Inter';
     background: #DAE5D0;
     border-radius: 5px;
     padding: 25px;
-    margin-top: 20px;
+    margin-top: 10px;
+`
+const InputWrapper = styled.div`
+    display : flex;
+    justify-content : flex-end;
+    position: relative;
 `
 const SearchInput = styled.input`
-    width: 686px;
+    width: 206px;
     height: 34px;
     border-radius: 7px;
     border:none;
+    
 `
-const SortByBrand = styled.span`
-  
-    font-size: 14px;
-    margin-left : 20px;
+const ButtonSearch = styled.button`
+    background: bottom;
+    border:none;
+    cursor: pointer;
+    font-size :22px;
+    position: absolute;
+    top: 5px;
 `
 const ListItem = styled.div`
     display: flex;
@@ -97,10 +110,12 @@ export {
     SectionBackGroundStyles,
     Wrapper,
     Title,
+    AddNew,
     ButtonAdd,
     Content,
+    InputWrapper,
     SearchInput,
-    SortByBrand,
+    ButtonSearch,
     ListItem,
     Item,
     ImageItem,

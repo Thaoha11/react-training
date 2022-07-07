@@ -2,10 +2,12 @@ import {
     SectionBackGroundStyles,
     Wrapper,
     Title,
+    AddNew,
     ButtonAdd,
     Content,
+    InputWrapper,
+    ButtonSearch,
     SearchInput,
-    SortByBrand,
     ListItem,
     Item,
     ImageItem,
@@ -20,11 +22,18 @@ function Header() {
     return (
         <SectionBackGroundStyles >
             <Wrapper>
-                <Title>LIST OF PRODUCTS</Title>
-                <ButtonAdd> &#43; Add new</ButtonAdd>
+                <Title>PRODUCTS</Title>
+                <AddNew>Add new </AddNew>
+                <ButtonAdd>
+                    <i class="fas fa-plus-square"></i>
+                </ButtonAdd>
                 <Content>
-                    <SearchInput placeholder='Search' />
-                    <SortByBrand> Sort by: Brand</SortByBrand>
+                    <InputWrapper>
+                        <SearchInput placeholder='Search' />
+                        <ButtonSearch> <i class="fas fa-search"></i> </ButtonSearch>
+                    </InputWrapper>
+
+
                     <ListItem>
                         <Item>
                             <ImageItem src='https://tuixachhanghieu.com/wp-content/uploads/2021/12/2929604tui-xach-nu-lady-dior-jpeg.jpg' />
