@@ -1,3 +1,4 @@
+
 import {
     SectionBackGroundStyles,
     Wrapper,
@@ -8,8 +9,16 @@ import {
     InputWrapper,
     ButtonSearch,
     SearchInput,
+    Row,
+    LetSidebar,
+    BrandTitle,
+    BrandName,
+    Brand,
     ListItem,
+    Line,
+    ItemLs,
     Item,
+    TitleText,
     ImageItem,
     NameItem,
     PriceItem,
@@ -22,7 +31,7 @@ function Header() {
     return (
         <SectionBackGroundStyles >
             <Wrapper>
-                <Title>PRODUCTS</Title>
+                <Title>products</Title>
                 <AddNew>Add new </AddNew>
                 <ButtonAdd>
                     <i class="fas fa-plus-square"></i>
@@ -33,24 +42,35 @@ function Header() {
                         <ButtonSearch> <i class="fas fa-search"></i> </ButtonSearch>
                     </InputWrapper>
 
+                    <Row>
+                        {/* Catelory */}
+                        <LetSidebar>
+                            <BrandTitle>
+                                Brand
+                            </BrandTitle>
+                            <BrandName>
+                                <Brand>nike</Brand>
+                                <Brand>adidas</Brand>
+                                <Brand>mlb</Brand>
+                                <Brand>pero</Brand>
+                            </BrandName>
 
-                    <ListItem>
-                        <Item>
-                            <ImageItem src='https://tuixachhanghieu.com/wp-content/uploads/2021/12/2929604tui-xach-nu-lady-dior-jpeg.jpg' />
-                            <DescrItem>
-                                <NameItem>Lady Dior</NameItem>
-                                <PriceItem>Price: </PriceItem>
-                                <PriceItem>Brand: </PriceItem>
-                            </DescrItem>
-                            <ButtonItem>
-                                <Button edit>Edit</Button>
-                                <Button>Delete</Button>
-                            </ButtonItem>
-                        </Item>
-                        <Item>
-                            <ImageItem src='https://sneakerdaily.vn/wp-content/uploads/2021/07/giay-nu-wmns-air-jordan-1-low-white-wolf-grey-dc0774-105.png.webp' />
-                        </Item>
-                    </ListItem>
+                        </LetSidebar>
+
+
+                        <ListItem>
+                            <Line>
+                                <TitleText>List item</TitleText>
+                            </Line>
+                            <ItemLs>
+                                <Item>
+                                    <ImageItem src='https://saigonbag.vn/uploads/noidung/thumb/tui-xach-dior-lady-d-lite-hong-0-970.jpg' />
+                                </Item>
+                            </ItemLs>
+
+                        </ListItem>
+                    </Row>
+
                 </Content>
             </Wrapper>
         </SectionBackGroundStyles>
