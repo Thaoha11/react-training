@@ -1,10 +1,10 @@
-# reactJS-training
+# ReactJS-training
 
 # Overview
 This document provides information about ReactJS practice. Build List of products website
 
 # Screenshots
-![Screenshot](./practice-1/src/assets/image/images.png)
+![Screenshot](./practice-1/src/assets/images/image.png)
 
 # Technical
 - HTML5/CSS3
@@ -25,7 +25,7 @@ This document provides information about ReactJS practice. Build List of product
 - Check re-render and using hook to avoid re-render.
 
 # REFERENCES
-- [reactJS](https://reactjs.org/docs/thinking-in-react.html)
+- [ReactJS](https://reactjs.org/docs/thinking-in-react.html)
 - [Styled-Component](https://styled-components.com/docs)
 
 # Installation
