@@ -7,14 +7,15 @@ import {
 
 function CreateProducts() {
 
-
+    const [show, setShow] = useState(false)
     return (
         <>
             <AddNew>Add new </AddNew>
-            <ButtonAdd >
+            <ButtonAdd onClick={() => setShow(!show)}>
                 <i className="fas fa-plus-square"></i>
             </ButtonAdd>
-            <Popup />
+            {show && <Popup />}
+
         </>
 
     )
