@@ -4,6 +4,7 @@ const AddNew = styled.p`
     font-size :16px;
     font-family: 'Inter';
     margin-bottom: 2px;
+    position: relative;
 `
 
 const ButtonAdd = styled.button`

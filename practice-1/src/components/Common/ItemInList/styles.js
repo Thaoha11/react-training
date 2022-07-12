@@ -22,19 +22,6 @@ const ImageItem = styled.img`
     width: 170px;
     
 `
-const Icon = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-`
-const FontAwesomeIcon = styled.button`
-    font-size :21px;
-    border :none;
-    background-color: #DAE5D0;
-    margin-top: 10px;
-    cursor: pointer;
-    color:  ${props => props.edit ? "#A3A0C2" : "#C36C1C"};
-`
 const RightSide = styled.div`
     display: flex;
     flex-direction: column;
@@ -55,8 +42,6 @@ export {
     Item,
     LeftSide,
     ImageItem,
-    Icon,
-    FontAwesomeIcon,
     RightSide,
     NameItem,
     DescrItem

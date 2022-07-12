@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Popup from '../Common/Popup'
 import {
     AddNew,
     ButtonAdd
@@ -5,12 +7,14 @@ import {
 
 function CreateProducts() {
 
+
     return (
         <>
             <AddNew>Add new </AddNew>
-            <ButtonAdd>
+            <ButtonAdd >
                 <i className="fas fa-plus-square"></i>
             </ButtonAdd>
+            <Popup />
         </>
 
     )

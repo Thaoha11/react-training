@@ -27,6 +27,7 @@ const Content = styled.div`
     border-radius: 5px;
     padding: 25px;
     margin-top: 10px;
+    
 `
 
 

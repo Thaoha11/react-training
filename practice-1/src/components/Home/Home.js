@@ -1,7 +1,8 @@
-import CartItems from '../CartItems'
-import CreateProducts from '../Common/CreateProducts'
-import SearchProducts from '../Common/SearchProducts'
-import SideBar from '../Common/Sidebar'
+
+import CreateProducts from '../CreateProducts'
+import SearchProducts from '../SearchProducts'
+import SideBar from '../Sidebar'
+import ItemInList from '../Common/ItemInList'
 
 import {
     SectionBackGroundStyles,
@@ -28,12 +29,15 @@ function Home() {
                             <Line>
                                 <TitleText>List item</TitleText>
                             </Line>
-                            <CartItems />
+                            <ItemInList />
+
                         </ListItem>
+
                     </Row>
 
                 </Content>
             </Wrapper>
+
         </SectionBackGroundStyles>
 
     )
