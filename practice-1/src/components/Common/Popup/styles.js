@@ -8,7 +8,7 @@ const Modal = styled.div`
     top: 122px;
     background: #83BDC9;
     font-family: 'Inter';
-    display:none;
+    z-index: 4;
 `
 const Title = styled.p`
     text-align : center;

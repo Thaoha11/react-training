@@ -1,3 +1,5 @@
+import { action, useStore } from '../../../store'
+
 import {
     ButtonFunc,
     Button
@@ -6,9 +8,12 @@ import {
 
 function PopupButton() {
 
+    // const handleAdd = () => {
+    //     dispatch(action.addProduct())
+    // }
     return (
         <ButtonFunc>
-            <Button save>Save</Button>
+            <Button save type='submit'>Save</Button>
             <Button>Cancel</Button>
 
         </ButtonFunc>
