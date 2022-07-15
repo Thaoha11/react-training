@@ -1,4 +1,10 @@
-import { ADD_PRODUCT, SET_INPUT_BRAND, SET_INPUT_IMAGE, SET_INPUT_NAME, SET_INPUT_PRICE } from './constants'
+import {
+    ADD_PRODUCT,
+    SET_INPUT_BRAND,
+    SET_INPUT_IMAGE,
+    SET_INPUT_NAME,
+    SET_INPUT_PRICE
+} from '../store/constants'
 
 const initState = {
     products: [],
@@ -36,7 +42,11 @@ function reducer(state, action) {
         case ADD_PRODUCT:
             return {
                 ...state,
-                products: [...state.products, action.payload]
+                products: [...state.products, action.payload],
+                productName: '',
+                productPrice: '',
+                productBrand: '',
+                productImage: ''
             }
 
         default:

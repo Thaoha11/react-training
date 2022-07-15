@@ -4,7 +4,7 @@ import {
     SET_INPUT_IMAGE,
     SET_INPUT_NAME,
     SET_INPUT_PRICE
-} from "./constants";
+} from "../store/constants";
 
 export const setInputName = payload => ({
     type: SET_INPUT_NAME,

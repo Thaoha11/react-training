@@ -1,5 +1,6 @@
 
-import { action, useStore } from '../../../store'
+import { action, useStore } from '../../store'
+
 import PopupButton from '../PopupButton'
 import {
     Modal,
@@ -15,7 +16,7 @@ function Popup() {
 
     const [state, dispatch] = useStore()
 
-    const { products, productName, productPrice, productBrand } = state
+    const { products, productName, productPrice, productBrand, productImage } = state
 
     const options = [
         { value: '', text: '--Choose an option--' },
@@ -24,12 +25,6 @@ function Popup() {
         { value: 'mlb', text: 'MLB' },
         { value: 'pero', text: 'Pero' }
     ]
-    // get value SelectBrand
-    const handleChange = e => {
-        dispatch(action.setInputBrand(e.target.value));
-    }
-
-    console.log(products)
 
     return (
         <Modal>
@@ -59,7 +54,10 @@ function Popup() {
                 <Label>Brand</Label>
                 <SelectBrand
                     value={productBrand}
-                    onChange={handleChange}
+                    onChange={e => {
+                        dispatch(action.setInputBrand(e.target.value))
+                    }}
+
                 >
                     {options.map(option => (
                         <ValueOption key={option.value} value={option.value}>
@@ -73,8 +71,9 @@ function Popup() {
                     multiple
                     type='file'
                     onChange={e => {
-                        dispatch(action.setInputImage(e.target.files))
+                        dispatch(action.setInputImage(e.target.files[0]))
                     }}
+
                 />
                 <PopupButton />
 

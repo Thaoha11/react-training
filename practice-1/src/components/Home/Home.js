@@ -2,7 +2,7 @@
 import CreateProducts from '../CreateProducts'
 import SearchProducts from '../SearchProducts'
 import SideBar from '../Sidebar'
-import ItemInList from '../Common/ItemInList'
+import ItemInList from '../../Common/ItemInList'
 
 import {
     SectionBackGroundStyles,
