@@ -1,5 +1,8 @@
 import Button from '../ButtonIcon'
-import { action, useStore } from '../../store'
+import { useStore } from '../../store'
+import React, { useState } from "react";
+
+
 import {
     ItemLs,
     Item,
@@ -9,10 +12,11 @@ import {
     NameItem,
     DescrItem
 } from './styles'
+import { setInputImage } from '../../actions/action';
 
 function ItemInList() {
+
     const [state, dispatch] = useStore()
-    console.log(state.productImage)
 
 
     return (
@@ -20,13 +24,13 @@ function ItemInList() {
             {state.products.map((product, index) => (
                 <Item key={index}>
                     <LeftSide>
-                        <ImageItem src={product.productImage} />
+                        <ImageItem src={URL.createObjectURL(product.productImage)} />
                         <Button />
                     </LeftSide>
                     <RightSide>
                         <NameItem> {product.productName}</NameItem>
                         <DescrItem>Price: {product.productPrice} </DescrItem>
-                        <DescrItem> Brand : {product.productBrand}</DescrItem>
+                        <DescrItem>Brand : {product.productBrand}</DescrItem>
                     </RightSide>
                 </Item>
             ))}
