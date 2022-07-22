@@ -1,8 +1,6 @@
 import Button from '../ButtonIcon'
 import { useStore } from '../../store'
-import React, { useState } from "react";
-
-
+import { listProducts } from '../../data'
 import {
     ItemLs,
     Item,
@@ -12,19 +10,25 @@ import {
     NameItem,
     DescrItem
 } from './styles'
-import { setInputImage } from '../../actions/action';
+
 
 function ItemInList() {
 
     const [state, dispatch] = useStore()
 
+    let DsProducts = [].concat(listProducts, state.products)
+    console.log(DsProducts)
+
+    localStorage.setItem('listProduct', JSON.stringify(DsProducts))
+    let listProduct = JSON.parse(localStorage.getItem('listProduct'))
+    console.log(listProduct)
 
     return (
         <ItemLs>
-            {state.products.map((product, index) => (
+            {listProduct.map((product, index) => (
                 <Item key={index}>
                     <LeftSide>
-                        <ImageItem src={URL.createObjectURL(product.productImage)} />
+                        <ImageItem src={(product.productImage)} />
                         <Button />
                     </LeftSide>
                     <RightSide>
@@ -34,9 +38,6 @@ function ItemInList() {
                     </RightSide>
                 </Item>
             ))}
-
-
-
         </ItemLs>
     )
 
