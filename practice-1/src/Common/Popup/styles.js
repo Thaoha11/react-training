@@ -1,14 +1,24 @@
 import styled from 'styled-components'
 
+const ModalWrapper = styled.div`
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    height: 930px;
+    width: 100%;
+    z-index: 10;
+    right: 1px;
+    top: 2px;
+`
 const Modal = styled.div`
     position: absolute;
     width: 600px;
     height: 530px;
-    left: 520px;
-    top: 122px;
+    left: 452px;
+    top: 154px;
     background: #83BDC9;
     font-family: 'Inter';
-    z-index: 4;
+    z-index: 39;
+
 `
 const Title = styled.p`
     text-align : center;
@@ -39,6 +49,7 @@ const ValueOption = styled.option`
 
 `
 export {
+    ModalWrapper,
     Modal,
     Title,
     FormSubmit,
