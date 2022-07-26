@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { action, useStore } from '../../store'
+// import { action, useStore } from '../../store'
 import Popup from '../Popup'
 
 import {
@@ -10,31 +10,25 @@ import {
 
 function PopupButton() {
 
-    const [state, dispatch] = useStore()
-
-    const { products } = state
+    // const [state, dispatch] = useStore()
+    // const { products, ...productInput } = state
 
     const [hide, setHide] = useState(true)
 
-    const handleAdd = (e) => {
-        e.preventDefault()
-        dispatch(action.addProduct(state))
-    }
-    console.log(products)
+
+
     const handleClose = (e) => {
-        e.preventDefault()
-        setHide(s => s)
-
-
+        // e.preventDefault()
+        setHide(!hide)
+        console.log(123)
     }
+
+
     return (
         <ButtonFunc>
-            <Button save onClick={handleAdd}>Save</Button>
-            {/* <Button onClick={() => setHide(e => e)} >Cancel</Button> */}
-            <Button onClick={handleClose}>Cancel</Button>
-
+            <Button save type="submit" value="Submit">Save</Button>
+            <Button type='button' onClick={handleClose}>Cancel</Button>
             {!hide && <Popup /> === null}
-
         </ButtonFunc>
     )
 }
