@@ -10,7 +10,8 @@ import {
     Label,
     InputProduct,
     SelectBrand,
-    ValueOption
+    ValueOption,
+    Errors
 } from './styles'
 
 function Popup() {
@@ -19,8 +20,7 @@ function Popup() {
 
     const { productName, productPrice, productBrand, productImage } = state
 
-    // notification
-    // const [msg, setMsg] = useState('')
+    const [errors, setErrors] = useState([])
 
     const options = [
         { value: '', text: '--Choose an option--' },
@@ -29,14 +29,57 @@ function Popup() {
         { value: 'mlb', text: 'MLB' },
         { value: 'pero', text: 'Pero' }
     ]
+    // validate form
+    const validate = () => {
+        const errors = []
+        if (productName === '') {
+            errors.push("Please enter email");
+        }
+        if (productPrice === '') {
+            errors.push("Please enter price");
+
+        } else {
+            if (Number(productPrice) < 0) {
+                errors.push("Wrong type of price");
+            }
+        }
+
+        if (productBrand === '') {
+            errors.push("Please enter brand");
+        }
+        if (productImage === '') {
+            errors.push("Please enter image");
+        }
+
+        return errors
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const { products, ...productInput } = state
+        const errors = validate()
+
+        if (errors.length > 0) {
+            setErrors(errors);
+            return;
+        }
+        // submit data
+        else {
+            dispatch(action.addProduct(productInput))
+
+        }
+    }
+
 
     return (
         <ModalWrapper>
             <Modal>
 
                 <Title> New Product</Title>
-                {/* <p>{msg}</p> */}
-                <FormSubmit onsubmit="return false">
+                {errors.map((error) => (
+                    <Errors key={error}>Error: {error}</Errors>
+                ))}
+                <FormSubmit onSubmit={handleSubmit} enctype="multipart/form-data">
                     <Label>Name</Label>
                     <InputProduct
                         type='text'
