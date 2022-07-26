@@ -1,18 +1,22 @@
+
 import {
     ADD_PRODUCT,
+    SET_INPUT_NAME,
+    SET_INPUT_PRICE,
     SET_INPUT_BRAND,
     SET_INPUT_IMAGE,
-    SET_INPUT_NAME,
-    SET_INPUT_PRICE
+
 } from '../store/constants'
 
+let listProduct = JSON.parse(localStorage.getItem('listProduct')) || []
+
 const initState = {
-    products: [],
+    products: listProduct,
+    productId: new Date().getTime().toString(),
     productName: '',
     productPrice: '',
     productBrand: '',
-    productImage: ''
-
+    productImage: '',
 }
 
 function reducer(state, action) {
@@ -46,7 +50,8 @@ function reducer(state, action) {
                 productName: '',
                 productPrice: '',
                 productBrand: '',
-                productImage: ''
+                productImage: '',
+
             }
 
         default:

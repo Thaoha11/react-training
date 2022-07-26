@@ -1,7 +1,7 @@
 
 import { action, useStore } from '../../store'
 import { useState } from 'react'
-import PopupButton from '../PopupButton'
+
 import {
     ModalWrapper,
     Modal,
@@ -11,10 +11,12 @@ import {
     InputProduct,
     SelectBrand,
     ValueOption,
-    Errors
+    Errors,
+    ButtonFunc,
+    Button
 } from './styles'
 
-function Popup() {
+function Popup({ onClosePopup }) {
 
     const [state, dispatch] = useStore()
 
@@ -57,6 +59,7 @@ function Popup() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const { products, ...productInput } = state
+
         const errors = validate()
 
         if (errors.length > 0) {
@@ -66,7 +69,8 @@ function Popup() {
         // submit data
         else {
             dispatch(action.addProduct(productInput))
-
+            // save to localStorage
+            localStorage.setItem('listProduct', JSON.stringify([...products, { ...productInput }]))
         }
     }
 
@@ -74,12 +78,11 @@ function Popup() {
     return (
         <ModalWrapper>
             <Modal>
-
                 <Title> New Product</Title>
                 {errors.map((error) => (
                     <Errors key={error}>Error: {error}</Errors>
                 ))}
-                <FormSubmit onSubmit={handleSubmit} enctype="multipart/form-data">
+                <FormSubmit onSubmit={handleSubmit} >
                     <Label>Name</Label>
                     <InputProduct
                         type='text'
@@ -123,7 +126,13 @@ function Popup() {
                         }}
 
                     />
-                    <PopupButton />
+
+                    {/* <PopupButton /> */}
+                    <ButtonFunc>
+                        <Button save type="submit" value="Submit">Save</Button>
+                        <Button type='button' onClick={onClosePopup}>Cancel</Button>
+                    </ButtonFunc>
+
                 </FormSubmit>
 
             </Modal>

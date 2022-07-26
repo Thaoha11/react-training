@@ -11,7 +11,7 @@ const Item = styled.div`
     display: flex;
     flex-direction: row;
     width: 325px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-left: 79px;
 `
 const LeftSide = styled.div`
@@ -20,7 +20,7 @@ const LeftSide = styled.div`
 `
 const ImageItem = styled.img`
     width: 170px;
-    
+    height: 215px;
 `
 const RightSide = styled.div`
     display: flex;

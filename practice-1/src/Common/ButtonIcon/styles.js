@@ -6,7 +6,7 @@ const Icon = styled.div`
     justify-content: space-around;
 `
 const FontAwesomeIcon = styled.button`
-    font-size :21px;
+    font-size :25px;
     border :none;
     background-color: #DAE5D0;
     margin-top: 10px;

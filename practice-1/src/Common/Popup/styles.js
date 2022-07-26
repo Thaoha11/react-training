@@ -12,8 +12,8 @@ const ModalWrapper = styled.div`
 const Modal = styled.div`
     position: absolute;
     width: 600px;
-    height: 530px;
-    left: 452px;
+    height: 600px;
+    left: 490px;
     top: 154px;
     background: #83BDC9;
     font-family: 'Inter';
@@ -30,7 +30,6 @@ const FormSubmit = styled.form`
 
 `
 const Label = styled.p`
-
     font-size: 16px;
 `
 const InputProduct = styled.input`
@@ -40,13 +39,33 @@ const InputProduct = styled.input`
 `
 
 const SelectBrand = styled.select`
-    width: 90px;
+    width: 150px;
     height: 30px;
     border-radius: 5px;
 `
 
 const ValueOption = styled.option`
 
+`
+const Errors = styled.p`
+    color :#d27016;
+    text-align: center;
+    line-height: 8px;
+`
+const ButtonFunc = styled.div`
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 33px;
+`
+const Button = styled.button`
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border:none;
+    font-family: 'Inter';
+    font-size: 16px;
+    background-color :${props => props.save ? "rgba(2, 88, 255, 0.54)" : "#CCCCCC"};
 `
 export {
     ModalWrapper,
@@ -57,5 +76,7 @@ export {
     InputProduct,
     SelectBrand,
     ValueOption,
-
+    Errors,
+    ButtonFunc,
+    Button
 }

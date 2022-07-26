@@ -1,5 +1,5 @@
 
-let DSproduct = [
+let listProducts = [
     {
         productId: '1',
         productName: 'Bucket',
@@ -15,4 +15,4 @@ let DSproduct = [
         productImage: 'https://www.charleskeith.com/on/demandware.static/-/Library-Sites-CharlesKeith/default/dw8ab22d4a/images/Muse/Spring22/krystal/blooming-spring/charles-keith-spring-22-blooming-spring-with-krystal-blog-02.jpg'
     }
 ]
-export { DSproduct } 
+export { listProducts } 

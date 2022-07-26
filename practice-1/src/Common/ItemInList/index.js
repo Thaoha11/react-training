@@ -1,6 +1,6 @@
 import Button from '../ButtonIcon'
 import { useStore } from '../../store'
-import { listProducts } from '../../data'
+
 import {
     ItemLs,
     Item,
@@ -14,18 +14,12 @@ import {
 
 function ItemInList() {
 
-    const [state, dispatch] = useStore()
+    const [state] = useStore()
 
-    let DsProducts = [].concat(listProducts, state.products)
-    console.log(DsProducts)
-
-    localStorage.setItem('listProduct', JSON.stringify(DsProducts))
-    let listProduct = JSON.parse(localStorage.getItem('listProduct'))
-    console.log(listProduct)
 
     return (
         <ItemLs>
-            {listProduct.map((product, index) => (
+            {state.products.map((product, index) => (
                 <Item key={index}>
                     <LeftSide>
                         <ImageItem src={(product.productImage)} />
