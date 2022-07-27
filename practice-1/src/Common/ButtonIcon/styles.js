@@ -16,6 +16,5 @@ const FontAwesomeIcon = styled.button`
 
 export {
     Icon,
-    FontAwesomeIcon,
-
+    FontAwesomeIcon
 }
