@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Popup from '../../Common/Popup'
+import Button from '../../Common/Button'
 import {
     AddNew,
-    ButtonAdd
+
 } from './styles'
 
 function CreateProducts() {
@@ -15,10 +16,8 @@ function CreateProducts() {
     return (
         <>
             <AddNew>Add new </AddNew>
-            <ButtonAdd onClick={() => setShow(!show)}>
-                <i className="fas fa-plus-square"></i>
-            </ButtonAdd>
-            {show && <Popup onClosePopup={handleClosePopup} />}
+            <Button onClicked={() => setShow(!show)} icon='fas fa-plus-square' ></Button>
+            {show && <Popup text='Create product' onClosePopup={handleClosePopup} />}
 
         </>
 
