@@ -1,4 +1,4 @@
-import Button from '../ButtonIcon'
+import Buttons from '../ButtonIcon'
 import { useStore } from '../../store'
 
 import {
@@ -16,14 +16,14 @@ function ItemInList() {
 
     const [state] = useStore()
 
-
+    console.log(state.products)
     return (
         <ItemLs>
             {state.products.map((product, index) => (
                 <Item key={index}>
                     <LeftSide>
                         <ImageItem src={(product.productImage)} />
-                        <Button />
+                        <Buttons />
                     </LeftSide>
                     <RightSide>
                         <NameItem> {product.productName}</NameItem>

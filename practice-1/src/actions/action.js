@@ -1,5 +1,6 @@
 import {
     ADD_PRODUCT,
+    DELETE_PRODUCT,
     SET_INPUT_BRAND,
     SET_INPUT_IMAGE,
     SET_INPUT_NAME,
@@ -28,5 +29,10 @@ export const setInputImage = payload => ({
 
 export const addProduct = payload => ({
     type: ADD_PRODUCT,
+    payload
+})
+
+export const deleteProduct = payload => ({
+    type: DELETE_PRODUCT,
     payload
 })

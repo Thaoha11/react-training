@@ -1,6 +1,7 @@
 
 import {
     ADD_PRODUCT,
+    DELETE_PRODUCT,
     SET_INPUT_NAME,
     SET_INPUT_PRICE,
     SET_INPUT_BRAND,
@@ -8,52 +9,89 @@ import {
 
 } from '../store/constants'
 
+// get from localStorage
 let listProduct = JSON.parse(localStorage.getItem('listProduct')) || []
 
 const initState = {
     products: listProduct,
-    productId: new Date().getTime().toString(),
-    productName: '',
-    productPrice: '',
-    productBrand: '',
-    productImage: '',
+    product: {
+        productId: new Date().getTime().toString(),
+        productName: '',
+        productPrice: '',
+        productBrand: '',
+        productImage: '',
+    }
+
 }
 
 function reducer(state, action) {
     switch (action.type) {
+
         case SET_INPUT_NAME:
             return {
                 ...state,
-                productName: action.payload
+                product: {
+                    ...state.product,
+                    productName: action.payload,
+                }
 
             }
 
         case SET_INPUT_PRICE:
             return {
                 ...state,
-                productPrice: action.payload
+                product: {
+                    ...state.product,
+                    productPrice: action.payload
+                }
             }
         case SET_INPUT_BRAND:
             return {
                 ...state,
-                productBrand: action.payload
+                product: {
+                    ...state.product,
+                    productBrand: action.payload
+                }
             }
         case SET_INPUT_IMAGE:
             return {
                 ...state,
-                productImage: action.payload
+                product: {
+                    ...state.product,
+                    productImage: action.payload
+                }
             }
         case ADD_PRODUCT:
+
             return {
                 ...state,
                 products: [...state.products, action.payload],
-                productName: '',
-                productPrice: '',
-                productBrand: '',
-                productImage: '',
+
+                product: {
+                    productId: new Date().getTime().toString(),
+                    productName: '',
+                    productPrice: '',
+                    productBrand: '',
+                    productImage: '',
+                }
 
             }
+        case DELETE_PRODUCT: {
+            // const { id, data } = action.payload
+            // const newProduct = state.product.data
+            // const indexOf = newProduct.findIndex((item) => item.id = id
+            // )
+            // console.log(newProduct.productId)
+            // newProduct.splice(indexOf, 1, data)
+            console.log(state.products[0])
+            return {
+                ...state,
 
+                products: state.products.filter(product => product.id !== action.payload),
+
+
+            }
+        }
         default:
             throw new Error('Invalid action')
     }

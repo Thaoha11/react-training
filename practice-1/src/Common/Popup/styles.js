@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const ModalWrapper = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
-    height: 930px;
+    height: 2000px;
     width: 100%;
     z-index: 10;
     right: 1px;
@@ -51,8 +51,10 @@ const Errors = styled.p`
     color :#d27016;
     text-align: center;
     line-height: 8px;
+    
 `
-const ButtonFunc = styled.div`
+
+const ButtonWrapper = styled.div`
     display:flex;
     flex-direction: row;
     justify-content: space-around;
@@ -77,6 +79,6 @@ export {
     SelectBrand,
     ValueOption,
     Errors,
-    ButtonFunc,
+    ButtonWrapper,
     Button
 }

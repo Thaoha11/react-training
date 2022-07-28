@@ -12,17 +12,19 @@ import {
     SelectBrand,
     ValueOption,
     Errors,
-    ButtonFunc,
+    ButtonWrapper,
     Button
 } from './styles'
 
-function Popup({ onClosePopup }) {
+function Popup({ onClosePopup, text }) {
 
     const [state, dispatch] = useStore()
 
-    const { productName, productPrice, productBrand, productImage } = state
+    const { productName, productPrice, productBrand, productImage } = state.product
 
     const [errors, setErrors] = useState([])
+
+    const [msg, setMsg] = useState('')
 
     const options = [
         { value: '', text: '--Choose an option--' },
@@ -31,6 +33,7 @@ function Popup({ onClosePopup }) {
         { value: 'mlb', text: 'MLB' },
         { value: 'pero', text: 'Pero' }
     ]
+
     // validate form
     const validate = () => {
         const errors = []
@@ -58,19 +61,23 @@ function Popup({ onClosePopup }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const { products, ...productInput } = state
+        const { products, ...product } = state
 
         const errors = validate()
 
         if (errors.length > 0) {
-            setErrors(errors);
-            return;
+            setErrors(errors)
+            return
         }
         // submit data
         else {
-            dispatch(action.addProduct(productInput))
+            console.log(state.product)
+            dispatch(action.addProduct(state.product))
             // save to localStorage
-            localStorage.setItem('listProduct', JSON.stringify([...products, { ...productInput }]))
+            // localStorage.setItem('listProduct', JSON.stringify([...products, { ...productInput }]))
+            localStorage.setItem('listProduct', JSON.stringify([...products, state.product]))
+            setMsg('Create successful products ')
+
         }
     }
 
@@ -78,10 +85,12 @@ function Popup({ onClosePopup }) {
     return (
         <ModalWrapper>
             <Modal>
-                <Title> New Product</Title>
+                <Title> {text}</Title>
                 {errors.map((error) => (
                     <Errors key={error}>Error: {error}</Errors>
                 ))}
+
+                <Errors notice>{msg}</Errors>
                 <FormSubmit onSubmit={handleSubmit} >
                     <Label>Name</Label>
                     <InputProduct
@@ -128,10 +137,10 @@ function Popup({ onClosePopup }) {
                     />
 
                     {/* <PopupButton /> */}
-                    <ButtonFunc>
+                    <ButtonWrapper>
                         <Button save type="submit" value="Submit">Save</Button>
                         <Button type='button' onClick={onClosePopup}>Cancel</Button>
-                    </ButtonFunc>
+                    </ButtonWrapper>
 
                 </FormSubmit>
 
