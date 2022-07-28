@@ -21,9 +21,9 @@ function Popup({ onClosePopup, text }) {
     const [state, dispatch] = useStore()
 
     const { productName, productPrice, productBrand, productImage } = state.product
-
+    // error message
     const [errors, setErrors] = useState([])
-
+    // success messgage
     const [msg, setMsg] = useState('')
 
     const options = [
@@ -71,7 +71,7 @@ function Popup({ onClosePopup, text }) {
         }
         // submit data
         else {
-            console.log(state.product)
+
             dispatch(action.addProduct(state.product))
             // save to localStorage
             // localStorage.setItem('listProduct', JSON.stringify([...products, { ...productInput }]))

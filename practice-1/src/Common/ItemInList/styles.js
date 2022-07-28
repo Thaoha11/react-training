@@ -36,7 +36,20 @@ const DescrItem = styled.p`
     font-size: 19px;
     font-weight: 600;
 `
-
+// Icon Button
+const Icon = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+`
+const FontAwesomeIcon = styled.button`
+    font-size :25px;
+    border :none;
+    background-color: #DAE5D0;
+    margin-top: 10px;
+    cursor: pointer;
+    color:  ${props => props.edit ? "#A3A0C2" : "#C36C1C"};
+`
 export {
     ItemLs,
     Item,
@@ -44,5 +57,7 @@ export {
     ImageItem,
     RightSide,
     NameItem,
-    DescrItem
+    DescrItem,
+    Icon,
+    FontAwesomeIcon
 }

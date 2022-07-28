@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const ModalWrapper = styled.div`
-    background-color: rgb(0 0 0 / 50%);
+    background-color: rgb(0 0 0 / 30%);
     position: absolute;
     height: 2000px;
     width: 100%;

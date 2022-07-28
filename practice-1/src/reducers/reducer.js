@@ -33,6 +33,7 @@ function reducer(state, action) {
                 product: {
                     ...state.product,
                     productName: action.payload,
+
                 }
 
             }
@@ -61,36 +62,39 @@ function reducer(state, action) {
                     productImage: action.payload
                 }
             }
-        case ADD_PRODUCT:
+
+
+        case ADD_PRODUCT: {
+
 
             return {
                 ...state,
-                products: [...state.products, action.payload],
 
+                products: [...state.products, action.payload],
                 product: {
+                    ...state.product,
                     productId: new Date().getTime().toString(),
                     productName: '',
                     productPrice: '',
                     productBrand: '',
                     productImage: '',
-                }
+
+                },
 
             }
+        }
         case DELETE_PRODUCT: {
-            // const { id, data } = action.payload
-            // const newProduct = state.product.data
-            // const indexOf = newProduct.findIndex((item) => item.id = id
-            // )
-            // console.log(newProduct.productId)
-            // newProduct.splice(indexOf, 1, data)
-            console.log(state.products[0])
+
+
             return {
                 ...state,
 
-                products: state.products.filter(product => product.id !== action.payload),
-
-
+                // products: state.products.filter(product => product.productId !== action.payload),
+                // product: {
+                //     ...state.product
+                // }
             }
+
         }
         default:
             throw new Error('Invalid action')

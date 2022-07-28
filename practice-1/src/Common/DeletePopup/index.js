@@ -12,10 +12,16 @@ import {
 function DeletePopup({ onClosePopup }) {
 
     const [state, dispatch] = useStore()
-    const { product } = state
+    const { products, product } = state
+
     const handleDelete = (id) => {
+
+        // for (let i = 0; i < products.length; i++) {
+
+        //     console.log(products[i]);
+        // }
         console.log(product)
-        dispatch(action.deleteProduct(product))
+        // dispatch(action.deleteProduct(product.productId))
     }
     return (
         <ModalWrapper>
