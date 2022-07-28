@@ -39,31 +39,37 @@
                 "complete": false
             }
         ]
-        const CourseItem = ({ todo }) => (
+        const CourseItem = ({ todo, onClick }) => (
 
             <div className='post-item'>
                 <span >{todo.id}</span>
-                <h2 className='post-title'> {todo.text} </h2>
+                <h2 className='post-title' onClick={() => onClick(todo)}> {todo.text} </h2>
 
             </div>
 
         )
 
 
-
         // app.js
         function App() {
+
+            const handleClick = (todo) => {
+                console.log(todo.text)
+            }
             return (
                 <div>
                     {todos.map(todo => {
                         <CourseItem
                             key={todo.id}
                             todo={todo}
+                            onClick={handleClick}
                         />
                     })}
                 </div>
             )
         }
+
+
         const container = document.getElementById('root')
         const root = ReactDOM.createRoot(container)
         root.render(<App />)

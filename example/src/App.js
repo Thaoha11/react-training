@@ -298,8 +298,10 @@ function App() {
 
       <Button as='a' href='#'> Normal</Button >
       <Button primary as={ReversedButton}>primary</Button>
+
       <Input defaultValue="@probablyup" type="text" />
       <Input defaultValue="@geelen" type="text" inputColor="rebeccapurple" />
+
       <nav>
         <ul>
           <li>
