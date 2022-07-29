@@ -1,12 +1,18 @@
 import {
     ADD_PRODUCT,
     DELETE_PRODUCT,
+    SET_INPUT_ID,
+    SET_INPUT_NAME,
+    SET_INPUT_PRICE,
     SET_INPUT_BRAND,
     SET_INPUT_IMAGE,
-    SET_INPUT_NAME,
-    SET_INPUT_PRICE
+
 } from "../store/constants";
 
+export const setInputId = payload => ({
+    type: SET_INPUT_ID,
+    payload
+})
 export const setInputName = payload => ({
     type: SET_INPUT_NAME,
     payload
