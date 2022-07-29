@@ -1,7 +1,7 @@
 
-import { action, useStore } from '../../store'
+import { actions, useStore } from '../../store'
 import { useState } from 'react'
-
+import { options } from '../helpers/constants'
 import {
     ModalWrapper,
     Modal,
@@ -19,40 +19,37 @@ import {
 function Popup({ onClosePopup, text }) {
 
     const [state, dispatch] = useStore()
-
-    const { productName, productPrice, productBrand, productImage } = state.product
     // error message
     const [errors, setErrors] = useState([])
     // success messgage
     const [msg, setMsg] = useState('')
 
-    const options = [
-        { value: '', text: '--Choose an option--' },
-        { value: 'nike', text: 'Nike' },
-        { value: 'adidas', text: 'Adidas' },
-        { value: 'mlb', text: 'MLB' },
-        { value: 'pero', text: 'Pero' }
-    ]
+    const [inputs, setInputs] = useState({})
 
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }))
+    }
     // validate form
     const validate = () => {
         const errors = []
-        if (productName === '') {
+        if (inputs.name === '') {
             errors.push("Please enter email");
         }
-        if (productPrice === '') {
+        if (inputs.price === '') {
             errors.push("Please enter price");
 
         } else {
-            if (Number(productPrice) < 0) {
+            if (Number(inputs.price) < 0) {
                 errors.push("Wrong type of price");
             }
         }
 
-        if (productBrand === '') {
+        if (inputs.brand === '') {
             errors.push("Please enter brand");
         }
-        if (productImage === '') {
+        if (inputs.image === '') {
             errors.push("Please enter image");
         }
 
@@ -71,8 +68,10 @@ function Popup({ onClosePopup, text }) {
         }
         // submit data
         else {
+            console.log(state.product)
+            // dispatch(actions.addProduct(state.product))
+            // this.props.addProduct(state.product)
 
-            dispatch(action.addProduct(state.product))
             // save to localStorage
             // localStorage.setItem('listProduct', JSON.stringify([...products, { ...productInput }]))
             localStorage.setItem('listProduct', JSON.stringify([...products, state.product]))
@@ -95,29 +94,26 @@ function Popup({ onClosePopup, text }) {
                     <Label>Name</Label>
                     <InputProduct
                         type='text'
-                        value={productName}
-                        onChange={e => {
-                            dispatch(action.setInputName(e.target.value))
-                        }}
+                        name='name'
+                        value={inputs.name || ''}
+                        onChange={handleChange}
 
                     />
 
                     <Label>Price</Label>
                     <InputProduct
                         type='text'
-                        value={productPrice}
-                        onChange={e => {
-                            dispatch(action.setInputPrice(e.target.value))
-                        }}
+                        name='price'
+                        value={inputs.price || ''}
+                        onChange={handleChange}
 
                     />
 
                     <Label>Brand</Label>
                     <SelectBrand
-                        value={productBrand}
-                        onChange={e => {
-                            dispatch(action.setInputBrand(e.target.value))
-                        }}
+                        name='brand'
+                        value={inputs.brand || ''}
+                        onChange={handleChange}
 
                     >
                         {options.map(option => (
@@ -129,10 +125,9 @@ function Popup({ onClosePopup, text }) {
 
                     <Label>Image</Label>
                     <InputProduct
-                        value={productImage}
-                        onChange={e => {
-                            dispatch(action.setInputImage(e.target.value));
-                        }}
+                        name='image'
+                        value={inputs.image || ''}
+                        onChange={handleChange}
 
                     />
 
