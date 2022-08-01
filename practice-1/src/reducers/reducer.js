@@ -10,7 +10,7 @@ import {
 } from '../store/constants'
 
 // get from localStorage
-let listProduct = JSON.parse(localStorage.getItem('listProduct')) || []
+const listProduct = JSON.parse(localStorage.getItem('listProduct')) || []
 
 const initState = {
     products: listProduct,
@@ -71,15 +71,11 @@ function reducer(state, action) {
                 ...state,
 
                 products: [...state.products, action.payload],
-                product: {
-                    ...state.product,
-                    productId: new Date().getTime().toString(),
-                    productName: '',
-                    productPrice: '',
-                    productBrand: '',
-                    productImage: '',
+                // product: {
+                //     ...state.product,
+                //     productId: new Date().getTime().toString(),
 
-                },
+                // },
 
             }
         }

@@ -1,4 +1,4 @@
-import { action, useStore } from '../../store'
+import { actions, useStore } from '../../store'
 import {
     ModalWrapper,
     Modal,
