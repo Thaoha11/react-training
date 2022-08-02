@@ -11,14 +11,14 @@ const ModalWrapper = styled.div`
 `
 const Modal = styled.div`
     position: absolute;
-    width: 600px;
-    height: 600px;
-    left: 490px;
+    width: 518px;
+    height: 551px;
+    left: 679px;
     top: 154px;
     background: #83BDC9;
     font-family: 'Inter';
     z-index: 39;
-
+    border-radius: 20px;
 `
 const Title = styled.p`
     text-align : center;
@@ -36,6 +36,7 @@ const InputProduct = styled.input`
     width: 427px;
     height: 30px;
     border-radius: 5px;
+    border: none;
 `
 
 const SelectBrand = styled.select`
@@ -63,10 +64,11 @@ const ButtonWrapper = styled.div`
 const Button = styled.button`
     cursor: pointer;
     width: 100px;
-    height: 30px;
+    height: 40px;
     border:none;
     font-family: 'Inter';
     font-size: 16px;
+    border-radius: 10px;
     background-color :${props => props.save ? "rgba(2, 88, 255, 0.54)" : "#CCCCCC"};
 `
 export {
