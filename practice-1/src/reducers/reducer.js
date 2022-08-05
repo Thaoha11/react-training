@@ -5,37 +5,27 @@ const listProduct = JSON.parse(localStorage.getItem("listProduct")) || [];
 
 const initState = {
   products: listProduct,
-  product: {
-    productId: new Date().getTime().toString(),
-    // productName: "",
-    // productPrice: "",
-    // productBrand: "",
-    // productImage: "",
-  },
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case ADD_PRODUCT: {
+      // save to localStorage
+      localStorage.setItem("listProduct", JSON.stringify([...state.products]));
       return {
         ...state,
-        ...state.productId,
         products: [...state.products, action.payload],
-        product: {
-          ...state.product,
-        },
       };
     }
     case DELETE_PRODUCT: {
       return {
         ...state,
-
-        // products: state.products.filter(product => product.productId !== action.payload),
-        // product: {
-        //     ...state.product
-        // }
+        products: state.products.filter(
+          (product) => product.id !== action.payload
+        ),
       };
     }
+
     default:
       throw new Error("Invalid action");
   }
