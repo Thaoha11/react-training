@@ -1,5 +1,6 @@
-import { useState } from "react";
-
+import { v4 as uuidv4 } from "uuid";
+import { StoreContext } from "../../store";
+import { useState, useContext } from "react";
 import { options } from "../helpers/constants";
 import {
   ModalWrapper,
@@ -15,21 +16,24 @@ import {
   Button,
 } from "./styles";
 
-function Popup({ onClosePopup, text, addNew }) {
-  // error message
-  // console.log(addNew);
+function Popup({ onClosePopup, text }) {
+  const { addProduct } = useContext(StoreContext);
 
+  // error message
   const [errors, setErrors] = useState([]);
+
   // success messgage
   const [msg, setMsg] = useState("");
 
   const [inputs, setInputs] = useState({});
 
+  // get value input
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
   // validate form
   const validate = () => {
     const errors = [];
@@ -66,15 +70,10 @@ function Popup({ onClosePopup, text, addNew }) {
       setErrors(errors);
       return;
     }
-
     // submit data
     else {
-      console.log({ ...inputs });
-
-      addNew({ ...inputs });
-
-      // save to localStorage
-      // localStorage.setItem('listProduct', JSON.stringify([...products, { ...productInput }]))
+      inputs.id = uuidv4();
+      addProduct({ ...inputs });
 
       setInputs("");
       setMsg("Create successful products ");
@@ -127,6 +126,7 @@ function Popup({ onClosePopup, text, addNew }) {
             onChange={handleChange}
           />
 
+          {/* <PopupButton /> */}
           <ButtonWrapper>
             <Button save type="submit" value="Submit">
               Save

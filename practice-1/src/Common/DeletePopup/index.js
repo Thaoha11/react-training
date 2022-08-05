@@ -1,41 +1,34 @@
-import { actions, useStore } from '../../store'
+import { useContext } from "react";
+import { StoreContext } from "../../store";
 import {
-    ModalWrapper,
-    Modal,
-    Title,
-    Content,
-    ButtonWrapper,
-    Button
-} from './styles'
-
+  ModalWrapper,
+  Modal,
+  Title,
+  Content,
+  ButtonWrapper,
+  Button,
+} from "./styles";
 
 function DeletePopup({ onClosePopup }) {
+  const { deleteProduct, products } = useContext(StoreContext);
 
-    const [state, dispatch] = useStore()
-    const { products, product } = state
+  const handleDelete = (id) => {
+    deleteProduct(products.id);
+  };
 
-    const handleDelete = (id) => {
-
-        // for (let i = 0; i < products.length; i++) {
-
-        //     console.log(products[i]);
-        // }
-        console.log(product)
-        // dispatch(action.deleteProduct(product.productId))
-    }
-    return (
-        <ModalWrapper>
-            <Modal>
-                <Title>Delete</Title>
-                <Content>Are you sure delete this products ?</Content>
-                <ButtonWrapper>
-                    <Button yes onClick={handleDelete}>Yes</Button>
-                    <Button onClick={onClosePopup}>No</Button>
-                </ButtonWrapper>
-
-            </Modal>
-        </ModalWrapper>
-
-    )
+  return (
+    <ModalWrapper>
+      <Modal>
+        <Title>Delete</Title>
+        <Content>Are you sure delete this products ?</Content>
+        <ButtonWrapper>
+          <Button yes onClick={handleDelete}>
+            Yes
+          </Button>
+          <Button onClick={onClosePopup}>No</Button>
+        </ButtonWrapper>
+      </Modal>
+    </ModalWrapper>
+  );
 }
-export default DeletePopup
+export default DeletePopup;

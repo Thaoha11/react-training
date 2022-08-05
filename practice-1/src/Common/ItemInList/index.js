@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useStore } from "../../store";
+import { useContext, useState } from "react";
+
 import DeletePopup from "../DeletePopup";
 import Button from "../Button";
+
 import {
   ItemLs,
   Item,
@@ -12,11 +13,12 @@ import {
   DescrItem,
   Icon,
 } from "./styles";
+import { StoreContext } from "../../store";
 
 function ItemInList() {
-  const [state] = useStore();
+  const { products } = useContext(StoreContext);
   const [show, setShow] = useState(false);
-
+  console.log(products);
   // Show DeletePopup
   const handleOpen = () => {
     setShow(!show);
@@ -25,17 +27,15 @@ function ItemInList() {
   const handleClose = () => {
     setShow(false);
   };
-  console.log(state.products);
+
   return (
     <ItemLs>
-      {state.products.map((product, index) => (
+      {products.map((product, index) => (
         <Item key={index}>
           <LeftSide>
             <ImageItem src={product.image} />
             <Icon>
-              <Button className="edit" icon="fas fa-edit">
-                {" "}
-              </Button>
+              <Button className="edit" icon="fas fa-edit"></Button>
               <Button
                 onClicked={handleOpen}
                 className="delete"
@@ -46,7 +46,7 @@ function ItemInList() {
           </LeftSide>
           <RightSide>
             <NameItem> {product.name}</NameItem>
-            <DescrItem>Price: {product.price} </DescrItem>
+            <DescrItem>Price: {product.price}$ </DescrItem>
             <DescrItem>Brand : {product.brand}</DescrItem>
           </RightSide>
         </Item>

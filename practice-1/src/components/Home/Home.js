@@ -15,12 +15,6 @@ import {
 } from "./style";
 
 function Home() {
-  // const [state, dispatch] = useStore();
-  // console.log(state);
-
-  // const handleAddNew = (product) => {
-  //   dispatch(actions.addProduct(product));
-  // };
   return (
     <SectionBackGroundStyles>
       <Wrapper>

@@ -2,7 +2,6 @@ import { useState } from "react";
 import Popup from "../../Common/Popup";
 import Button from "../../Common/Button";
 import { AddNew } from "./styles";
-import { actions, useStore } from "../../store";
 
 function CreateProducts() {
   // show popup
@@ -12,11 +11,6 @@ function CreateProducts() {
     setShow(false);
   };
 
-  const [state, dispatch] = useStore();
-
-  const handleAddNew = (product) => {
-    dispatch(actions.addProduct(product));
-  };
   return (
     <>
       <AddNew>Add new </AddNew>
@@ -24,13 +18,7 @@ function CreateProducts() {
         onClicked={() => setShow(!show)}
         icon="fas fa-plus-square"
       ></Button>
-      {show && (
-        <Popup
-          text="Create product"
-          onClosePopup={handleClosePopup}
-          addNew={handleAddNew}
-        />
-      )}
+      {show && <Popup text="Create product" onClosePopup={handleClosePopup} />}
     </>
   );
 }
