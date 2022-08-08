@@ -1,25 +1,28 @@
-import {
-    LeftSidebar,
-    BrandTitle,
-    BrandName,
-    Brand
-} from './styles'
+import { LeftSidebar, BrandTitle, BrandName, CheckBox, Label } from "./styles";
 
 function SideBar() {
-
-    return (
-        <LeftSidebar>
-            <BrandTitle>
-                Brand
-            </BrandTitle>
-            <BrandName>
-                <Brand>nike</Brand>
-                <Brand>adidas</Brand>
-                <Brand>mlb</Brand>
-                <Brand>pero</Brand>
-            </BrandName>
-
-        </LeftSidebar>
-    )
+  return (
+    <LeftSidebar>
+      <BrandTitle>Brand</BrandTitle>
+      <BrandName>
+        <Label>
+          <CheckBox name="isGoing" type="checkbox" />
+          nike
+        </Label>
+        <Label>
+          <CheckBox name="isGoing" type="checkbox" />
+          adidas
+        </Label>
+        <Label>
+          <CheckBox name="isGoing" type="checkbox" />
+          mlb
+        </Label>
+        <Label>
+          <CheckBox name="isGoing" type="checkbox" />
+          pero
+        </Label>
+      </BrandName>
+    </LeftSidebar>
+  );
 }
-export default SideBar
+export default SideBar;
