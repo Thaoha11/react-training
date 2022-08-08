@@ -4,9 +4,12 @@ import Button from "../../Common/Button";
 import { AddNew } from "./styles";
 
 function CreateProducts() {
-  // show popup
   const [show, setShow] = useState(false);
-
+  // show popup
+  const handleOpenPopup = () => {
+    setShow(!show);
+  };
+  // close popup
   const handleClosePopup = () => {
     setShow(false);
   };
@@ -14,10 +17,7 @@ function CreateProducts() {
   return (
     <>
       <AddNew>Add new </AddNew>
-      <Button
-        onClicked={() => setShow(!show)}
-        icon="fas fa-plus-square"
-      ></Button>
+      <Button onClicked={handleOpenPopup} icon="fas fa-plus-square"></Button>
       {show && <Popup text="Create product" onClosePopup={handleClosePopup} />}
     </>
   );

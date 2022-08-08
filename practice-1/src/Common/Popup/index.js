@@ -17,7 +17,7 @@ import {
 } from "./styles";
 
 function Popup({ onClosePopup, text }) {
-  const { addProduct } = useContext(StoreContext);
+  const { addProduct, updateProduct, products } = useContext(StoreContext);
 
   // error message
   const [errors, setErrors] = useState([]);
@@ -125,8 +125,6 @@ function Popup({ onClosePopup, text }) {
             value={inputs.image || ""}
             onChange={handleChange}
           />
-
-          {/* <PopupButton /> */}
           <ButtonWrapper>
             <Button save type="submit" value="Submit">
               Save

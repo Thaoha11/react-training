@@ -11,8 +11,14 @@ function Provider({ children }) {
     addProduct: ({ ...product }) => {
       dispatch(actions.addProduct(product));
     },
-    deleteProduct: (id) => {
-      dispatch(actions.deleteProduct(id));
+    deleteProduct: (index) => {
+      dispatch(actions.deleteProduct(index));
+    },
+    updateProduct: (product) => {
+      dispatch(actions.updateProduct(product));
+    },
+    searchProduct: (product) => {
+      dispatch(actions.searchProduct(product));
     },
   };
 

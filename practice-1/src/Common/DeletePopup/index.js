@@ -12,8 +12,8 @@ import {
 function DeletePopup({ onClosePopup }) {
   const { deleteProduct, products } = useContext(StoreContext);
 
-  const handleDelete = (id) => {
-    deleteProduct(products.id);
+  const handleDelete = (index) => {
+    deleteProduct(products[index]);
   };
 
   return (
