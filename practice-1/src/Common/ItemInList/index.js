@@ -29,9 +29,9 @@ function ItemInList() {
 
   // Close DeletePopup
   const handleClose = () => {
-    selectedUpdateProductId(null);
+    setSelectedDeleteProductId(null);
   };
-
+  // Delete products
   const handleDelete = () => {
     deleteProduct(selectedDeleteProductId);
     setSelectedDeleteProductId(null);
@@ -45,8 +45,11 @@ function ItemInList() {
           <LeftSide>
             <ImageItem src={product.image} />
             <Icon>
-              <Button className="edit" icon="fas fa-edit"></Button>
-
+              <Button
+                className="edit"
+                icon="fas fa-edit"
+                onClicked={() => setSelectedUpdateProductId(product)}
+              ></Button>
               <Button
                 onClicked={() => handleOpen(product.id)}
                 className="delete"
@@ -66,7 +69,9 @@ function ItemInList() {
         <ConfirmDeletePopup onOK={handleDelete} onClosePopup={handleClose} />
       )}
       {/* show update popup */}
-      {/* {!!setSelectedUpdateProductId && <Popup text="Edit products" />} */}
+      {!!selectedUpdateProductId && (
+        <Popup text="Edit products" defaultValue={selectedUpdateProductId} />
+      )}
     </ItemLs>
   );
 }

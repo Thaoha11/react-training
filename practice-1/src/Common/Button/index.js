@@ -1,9 +1,9 @@
 import { CommonButton } from "./styles";
 
-function Button({ onClicked, text, className, icon, ref }) {
+function Button({ onClicked, text, className, icon }) {
   return (
     <>
-      <CommonButton ref={ref} onClick={onClicked} className={className}>
+      <CommonButton onClick={onClicked} className={className}>
         {text} <i className={icon}></i>
       </CommonButton>
     </>

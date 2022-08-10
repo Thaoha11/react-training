@@ -16,8 +16,8 @@ import {
   Button,
 } from "./styles";
 
-function Popup({ onClosePopup, text }) {
-  const { addProduct, updateProduct, products } = useContext(StoreContext);
+function Popup({ onClosePopup, text, defaultValue = {} }) {
+  const { addProduct } = useContext(StoreContext);
 
   // error message
   const [errors, setErrors] = useState([]);
@@ -25,7 +25,7 @@ function Popup({ onClosePopup, text }) {
   // success messgage
   const [msg, setMsg] = useState("");
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState(defaultValue);
 
   // get value input
   const handleChange = (event) => {
