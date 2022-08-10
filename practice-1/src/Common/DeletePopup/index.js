@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { StoreContext } from "../../store";
 import {
   ModalWrapper,
   Modal,
@@ -9,20 +7,14 @@ import {
   Button,
 } from "./styles";
 
-function DeletePopup({ onClosePopup }) {
-  const { deleteProduct, products } = useContext(StoreContext);
-
-  const handleDelete = (index) => {
-    deleteProduct(products[index]);
-  };
-
+function ConfirmDeletePopup({ onClosePopup, onOK }) {
   return (
     <ModalWrapper>
       <Modal>
         <Title>Delete</Title>
         <Content>Are you sure delete this products ?</Content>
         <ButtonWrapper>
-          <Button yes onClick={handleDelete}>
+          <Button yes onClick={onOK}>
             Yes
           </Button>
           <Button onClick={onClosePopup}>No</Button>
@@ -31,4 +23,4 @@ function DeletePopup({ onClosePopup }) {
     </ModalWrapper>
   );
 }
-export default DeletePopup;
+export default ConfirmDeletePopup;

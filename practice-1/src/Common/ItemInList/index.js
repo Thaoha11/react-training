@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Popup from "../Popup";
-import DeletePopup from "../DeletePopup";
+import ConfirmDeletePopup from "../DeletePopup";
 import Button from "../Button";
 
 import {
@@ -16,42 +16,39 @@ import {
 import { StoreContext } from "../../store";
 
 function ItemInList() {
-  const { products } = useContext(StoreContext);
+  const { products, deleteProduct } = useContext(StoreContext);
 
-  const [show, setShow] = useState(false);
-  const [isShow, setIsShow] = useState(false);
+  const [selectedDeleteProductId, setSelectedDeleteProductId] = useState(null);
+  const [selectedUpdateProductId, setSelectedUpdateProductId] = useState(null);
+
   console.log(products);
   // Show DeletePopup
-  const handleOpen = () => {
-    setShow(!show);
-  };
-  // Close DeletePopup
-  const handleClose = () => {
-    setShow(false);
+  const handleOpen = (id) => {
+    setSelectedDeleteProductId(id);
   };
 
-  const handleOpenPopup = () => {
-    setIsShow(!isShow);
+  // Close DeletePopup
+  const handleClose = () => {
+    selectedUpdateProductId(null);
   };
-  const handleClosePopup = () => {
-    setIsShow(false);
+
+  const handleDelete = () => {
+    deleteProduct(selectedDeleteProductId);
+    setSelectedDeleteProductId(null);
   };
+
   return (
     <ItemLs>
       {/* render item */}
-      {products.map((product, index) => (
-        <Item key={index}>
+      {products.map((product) => (
+        <Item key={product.id}>
           <LeftSide>
             <ImageItem src={product.image} />
             <Icon>
-              <Button
-                className="edit"
-                icon="fas fa-edit"
-                onClicked={handleOpenPopup}
-              ></Button>
+              <Button className="edit" icon="fas fa-edit"></Button>
 
               <Button
-                onClicked={handleOpen}
+                onClicked={() => handleOpen(product.id)}
                 className="delete"
                 icon="fas fa-trash-alt"
               ></Button>
@@ -65,9 +62,11 @@ function ItemInList() {
         </Item>
       ))}
       {/* show delete popup */}
-      {show && <DeletePopup onClosePopup={handleClose} />}
+      {!!selectedDeleteProductId && (
+        <ConfirmDeletePopup onOK={handleDelete} onClosePopup={handleClose} />
+      )}
       {/* show update popup */}
-      {isShow && <Popup text="Edit products" onClosePopup={handleClosePopup} />}
+      {/* {!!setSelectedUpdateProductId && <Popup text="Edit products" />} */}
     </ItemLs>
   );
 }
