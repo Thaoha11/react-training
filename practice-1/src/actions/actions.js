@@ -3,6 +3,7 @@ import {
   DELETE_PRODUCT,
   SEARCH_PRODUCT,
   UPDATE_PRODUCT,
+  FILTER_PRODUCT,
 } from "../store/constants";
 
 export const addProduct = (payload) => ({
@@ -22,5 +23,9 @@ export const updateProduct = (payload) => ({
 
 export const searchProduct = (payload) => ({
   type: SEARCH_PRODUCT,
+  payload,
+});
+export const filterProduct = (payload) => ({
+  type: FILTER_PRODUCT,
   payload,
 });

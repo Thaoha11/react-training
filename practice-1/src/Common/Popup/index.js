@@ -17,7 +17,7 @@ import {
 } from "./styles";
 
 function Popup({ onClosePopup, text, defaultValue = {} }) {
-  const { addProduct } = useContext(StoreContext);
+  const { addProduct, updateProduct } = useContext(StoreContext);
 
   // error message
   const [errors, setErrors] = useState([]);
@@ -27,6 +27,7 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
 
   const [inputs, setInputs] = useState(defaultValue);
 
+  const [isUpdate, setIsUpdate] = useState(false);
   // get value input
   const handleChange = (event) => {
     const name = event.target.name;
@@ -70,13 +71,16 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
       setErrors(errors);
       return;
     }
+
     // submit data
-    else {
+    else if (inputs.id === "") {
       inputs.id = uuidv4();
       addProduct({ ...inputs });
-
+      setIsUpdate(true);
       setInputs("");
       setMsg("Create successful products ");
+    } else {
+      updateProduct({ ...inputs });
     }
   };
 

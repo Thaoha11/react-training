@@ -11,14 +11,17 @@ function Provider({ children }) {
     addProduct: ({ ...product }) => {
       dispatch(actions.addProduct(product));
     },
-    deleteProduct: (index) => {
-      dispatch(actions.deleteProduct(index));
+    deleteProduct: (id) => {
+      dispatch(actions.deleteProduct(id));
     },
     updateProduct: (product) => {
       dispatch(actions.updateProduct(product));
     },
     searchProduct: (product) => {
       dispatch(actions.searchProduct(product));
+    },
+    filterProduct: (product) => {
+      dispatch(actions.filterProduct(product));
     },
   };
 

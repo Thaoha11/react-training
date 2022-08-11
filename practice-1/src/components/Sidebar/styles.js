@@ -48,11 +48,12 @@ const BrandName = styled.div`
 
 const CheckBox = styled.input`
   border-radius: 5px;
+  cursor: pointer;
 `;
 const Label = styled.label`
   font-size: 15px;
   width: 120px;
-  border-radius: 5px;
+  border-radius: 15px;
   text-transform: uppercase;
   padding-top: 9px;
   padding-left: 26px;

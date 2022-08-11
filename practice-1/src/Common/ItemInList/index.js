@@ -26,10 +26,10 @@ function ItemInList() {
   const handleOpen = (id) => {
     setSelectedDeleteProductId(id);
   };
-
-  // Close DeletePopup
+  // Close popup
   const handleClose = () => {
     setSelectedDeleteProductId(null);
+    setSelectedUpdateProductId(null);
   };
   // Delete products
   const handleDelete = () => {
@@ -70,7 +70,11 @@ function ItemInList() {
       )}
       {/* show update popup */}
       {!!selectedUpdateProductId && (
-        <Popup text="Edit products" defaultValue={selectedUpdateProductId} />
+        <Popup
+          text="Edit products"
+          defaultValue={selectedUpdateProductId}
+          onClosePopup={handleClose}
+        />
       )}
     </ItemLs>
   );

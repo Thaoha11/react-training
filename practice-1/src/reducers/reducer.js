@@ -3,6 +3,7 @@ import {
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
   SEARCH_PRODUCT,
+  FILTER_PRODUCT,
 } from "../store/constants";
 
 // get from localStorage
@@ -23,15 +24,33 @@ function reducer(state, action) {
         products: [...state.products, action.payload],
       };
     }
+
     case DELETE_PRODUCT: {
       return {
         ...state,
-        products: state.products.splice(action.payload, 1),
+        // Delete by productId
+        products: state.products.filter(
+          (product) => product.id !== action.payload
+        ),
       };
     }
+
     case UPDATE_PRODUCT: {
-      return {};
+      const updatedProduct = action.payload;
+
+      const updatedProducts = state.products.map((product) => {
+        if (product.id === updatedProduct.id) {
+          return updatedProduct;
+        }
+        return product;
+      });
+
+      return {
+        ...state,
+        products: updatedProducts,
+      };
     }
+
     case SEARCH_PRODUCT: {
       return {
         ...state,
@@ -40,6 +59,15 @@ function reducer(state, action) {
           (product) =>
             product.name.toLowerCase().search(action.payload.toLowerCase()) !==
             -1
+        ),
+      };
+    }
+
+    case FILTER_PRODUCT: {
+      return {
+        ...state,
+        products: state.products.filter(
+          (item) => item.brand === action.payload
         ),
       };
     }
