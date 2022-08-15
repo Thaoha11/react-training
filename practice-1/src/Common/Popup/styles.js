@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  height: 2000px;
+  height: 1000px;
   width: 100%;
   z-index: 10;
   right: 1px;
@@ -13,12 +13,15 @@ const Modal = styled.div`
   position: absolute;
   width: 518px;
   height: 551px;
-  left: 695px;
-  top: 154px;
+
   background: #83bdc9;
   font-family: "Inter";
   z-index: 39;
   border-radius: 20px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 const Title = styled.p`
   text-align: center;
