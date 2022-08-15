@@ -6,7 +6,7 @@ This document provides information about ReactJS practice. Build List of product
 
 # Screenshots
 
-![Screenshot](./practice-1/src/assets/images/image.png)
+![Screenshot](./src/assets/images/image.png)
 
 # Technical
 
