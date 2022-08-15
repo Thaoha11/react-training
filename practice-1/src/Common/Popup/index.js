@@ -27,7 +27,6 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
 
   const [inputs, setInputs] = useState(defaultValue);
 
-  const [isUpdate, setIsUpdate] = useState(false);
   // get value input
   const handleChange = (event) => {
     const name = event.target.name;
@@ -73,14 +72,15 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
     }
 
     // submit data
-    else if (inputs.id === "") {
+    if (inputs.id) {
+      updateProduct({ ...inputs });
+      onClosePopup();
+    } else {
       inputs.id = uuidv4();
       addProduct({ ...inputs });
-      setIsUpdate(true);
+
       setInputs("");
       setMsg("Create successful products ");
-    } else {
-      updateProduct({ ...inputs });
     }
   };
 
