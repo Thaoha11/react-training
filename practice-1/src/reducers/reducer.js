@@ -17,18 +17,20 @@ const initState = {
 function reducer(state, action) {
   switch (action.type) {
     case ADD_PRODUCT: {
-      // save to localStorage
-      localStorage.setItem("listProduct", JSON.stringify([...state.products]));
+      const products = [...state.products, action.payload];
+      localStorage.setItem("listProduct", JSON.stringify(products));
       return {
         ...state,
-        products: [...state.products, action.payload],
+        products: products,
       };
     }
 
     case DELETE_PRODUCT: {
+      console.log(action.payload);
+      // localStorage.removeItem("listProduct", JSON.stringify(action.payload));
       return {
         ...state,
-        // Delete by productId
+        // Delete by id
         products: state.products.filter(
           (product) => product.id !== action.payload
         ),
@@ -37,14 +39,13 @@ function reducer(state, action) {
 
     case UPDATE_PRODUCT: {
       const updatedProduct = action.payload;
-
       const updatedProducts = state.products.map((product) => {
         if (product.id === updatedProduct.id) {
           return updatedProduct;
         }
         return product;
       });
-
+      localStorage.setItem("listProduct", JSON.stringify(updatedProducts));
       return {
         ...state,
         products: updatedProducts,
@@ -57,20 +58,27 @@ function reducer(state, action) {
         // convert to lowcase
         products: state.products.filter(
           (product) =>
-            product.name.toLowerCase().search(action.payload.toLowerCase()) !==
-            -1
+            product.name
+              .toLowerCase()
+              .search(action.payload.toLowerCase().trim()) !== -1
         ),
       };
     }
 
     case FILTER_PRODUCT: {
+      // console.log(state);
+      // const a = state.products.filter((item) =>
+      //   action.payload.includes(item.brand)
+      // );
+      // console.log("arr", a);
       return {
         ...state,
-        products: state.products.filter(
-          (item) => item.brand === action.payload
+        products: state.products.filter((item) =>
+          action.payload.includes(item.brand)
         ),
       };
     }
+
     default:
       throw new Error("Invalid action");
   }
