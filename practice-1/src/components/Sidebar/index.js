@@ -7,15 +7,19 @@ function SideBar() {
 
   const checkList = ["nike", "adidas", "mlb", "pero"];
   const [checked, setChecked] = useState([]);
-  const handleCheck = (e) => {
-    // var updatedList = e.target.value;
 
-    var updatedList = [...checked];
+  const handleCheck = (e) => {
+    let listChecked = [...checked];
     if (e.target.checked) {
-      updatedList = [...checked, e.target.value];
-      console.log(updatedList);
+      listChecked = [...checked, e.target.value];
+    } else {
+      listChecked.splice(checked.indexOf(e.target.value), 1);
     }
-    filterProduct(updatedList);
+    setChecked(listChecked);
+
+    filterProduct(listChecked);
+    // const b = products.filter((item) => listChecked.includes(item.brand));
+    // console.log(b);
   };
 
   return (
