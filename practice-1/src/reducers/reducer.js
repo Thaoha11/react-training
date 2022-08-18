@@ -12,6 +12,7 @@ const listProduct = JSON.parse(localStorage.getItem("listProduct")) || [];
 const initState = {
   products: listProduct,
   isSearchActive: false,
+  filteredList: [],
 };
 
 function reducer(state, action) {
@@ -19,6 +20,7 @@ function reducer(state, action) {
     case ADD_PRODUCT: {
       const products = [...state.products, action.payload];
       localStorage.setItem("listProduct", JSON.stringify(products));
+
       return {
         ...state,
         products: products,
@@ -26,7 +28,6 @@ function reducer(state, action) {
     }
 
     case DELETE_PRODUCT: {
-      console.log(action.payload);
       // localStorage.removeItem("listProduct", JSON.stringify(action.payload));
       return {
         ...state,
@@ -46,6 +47,7 @@ function reducer(state, action) {
         return product;
       });
       localStorage.setItem("listProduct", JSON.stringify(updatedProducts));
+
       return {
         ...state,
         products: updatedProducts,
@@ -66,16 +68,15 @@ function reducer(state, action) {
     }
 
     case FILTER_PRODUCT: {
-      // console.log(state);
-      // const a = state.products.filter((item) =>
-      //   action.payload.includes(item.brand)
-      // );
-      // console.log("arr", a);
+      const listChecked = action.payload;
+
+      const filterList = state.products.filter((item) =>
+        listChecked.includes(item.brand)
+      );
+
       return {
         ...state,
-        products: state.products.filter((item) =>
-          action.payload.includes(item.brand)
-        ),
+        filteredList: filterList,
       };
     }
 

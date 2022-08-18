@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Popup from "../Popup";
 import ConfirmDeletePopup from "../DeletePopup";
 import Button from "../Button";
 
 import {
-  ItemLs,
   Item,
   LeftSide,
   ImageItem,
@@ -12,16 +11,13 @@ import {
   NameItem,
   DescrItem,
   Icon,
+  ItemLs,
 } from "./styles";
-import { StoreContext } from "../../store";
 
-function ItemInList() {
-  const { products, deleteProduct } = useContext(StoreContext);
-
+function ItemInList({ onDelete, products, onUpdate }) {
   const [selectedDeleteProductId, setSelectedDeleteProductId] = useState(null);
   const [selectedUpdateProductId, setSelectedUpdateProductId] = useState(null);
 
-  console.log(products);
   // Show DeletePopup
   const handleOpen = (id) => {
     setSelectedDeleteProductId(id);
@@ -33,13 +29,14 @@ function ItemInList() {
   };
   // Delete products
   const handleDelete = () => {
-    deleteProduct(selectedDeleteProductId);
+    onDelete(selectedDeleteProductId);
     setSelectedDeleteProductId(null);
   };
-
+  const handleUpdate = (product) => {
+    onUpdate(product);
+  };
   return (
     <ItemLs>
-      {/* render item */}
       {products.map((product) => (
         <Item key={product.id}>
           <LeftSide>
@@ -59,8 +56,8 @@ function ItemInList() {
           </LeftSide>
           <RightSide>
             <NameItem> {product.name}</NameItem>
-            <DescrItem>Price: {product.price}$ </DescrItem>
-            <DescrItem>Brand : {product.brand}</DescrItem>
+            <DescrItem>Price: {product.price} $ </DescrItem>
+            <DescrItem>Brand: {product.brand}</DescrItem>
           </RightSide>
         </Item>
       ))}
@@ -74,6 +71,7 @@ function ItemInList() {
           text="Edit products"
           defaultValue={selectedUpdateProductId}
           onClosePopup={handleClose}
+          OnIsUpdate={handleUpdate}
         />
       )}
     </ItemLs>

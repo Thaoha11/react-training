@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { StoreContext } from "../../store";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { options } from "../helpers/constants";
 import {
   ModalWrapper,
@@ -16,9 +15,14 @@ import {
   Button,
 } from "./styles";
 
-function Popup({ onClosePopup, text, defaultValue = {} }) {
-  const { addProduct, updateProduct } = useContext(StoreContext);
+function Popup({
+  onClosePopup,
+  text,
+  defaultValue = {},
 
+  onSubmit,
+  OnIsUpdate,
+}) {
   // error message
   const [errors, setErrors] = useState([]);
 
@@ -38,11 +42,11 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
   const validate = () => {
     const errors = [];
 
-    if (inputs.name === "") {
+    if (!inputs.name) {
       errors.push("Please enter email");
     }
 
-    if (inputs.price === "") {
+    if (!inputs.price) {
       errors.push("Please enter price");
     } else {
       if (Number(inputs.price) < 0) {
@@ -50,11 +54,11 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
       }
     }
 
-    if (inputs.brand === "") {
+    if (!inputs.brand) {
       errors.push("Please enter brand");
     }
 
-    if (inputs.image === "") {
+    if (!inputs.image) {
       errors.push("Please enter image");
     }
 
@@ -63,7 +67,6 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const errors = validate();
 
     if (errors.length > 0) {
@@ -71,13 +74,15 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
       return;
     }
 
-    // submit data
+    // update data
     if (inputs.id) {
-      updateProduct({ ...inputs });
+      OnIsUpdate(inputs);
       onClosePopup();
-    } else {
+    }
+    // submit data
+    else {
       inputs.id = uuidv4();
-      addProduct({ ...inputs });
+      onSubmit({ ...inputs });
 
       setInputs("");
       setMsg("Create successful products ");
@@ -88,11 +93,12 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
     <ModalWrapper>
       <Modal>
         <Title> {text}</Title>
-        {errors.map((error) => (
-          <Errors key={error}>Error: {error}</Errors>
+        {errors.map((errors, index) => (
+          <Errors key={index}>Error: {errors}</Errors>
         ))}
 
         <Errors notice>{msg}</Errors>
+
         <FormSubmit onSubmit={handleSubmit}>
           <Label>Name</Label>
           <InputProduct
@@ -102,6 +108,7 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
             onChange={handleChange}
           />
 
+          <Errors>{errors.name}</Errors>
           <Label>Price</Label>
           <InputProduct
             type="text"
@@ -129,6 +136,7 @@ function Popup({ onClosePopup, text, defaultValue = {} }) {
             value={inputs.image || ""}
             onChange={handleChange}
           />
+
           <ButtonWrapper>
             <Button save type="submit" value="Submit">
               Save

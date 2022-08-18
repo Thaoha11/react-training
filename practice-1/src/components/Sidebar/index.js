@@ -1,10 +1,7 @@
-import { useContext, useState } from "react";
-import { StoreContext } from "../../store";
+import { useState } from "react";
 import { LeftSidebar, BrandTitle, BrandName, CheckBox, Label } from "./styles";
 
-function SideBar() {
-  const { products, filterProduct } = useContext(StoreContext);
-
+function SideBar({ onFilter }) {
   const checkList = ["nike", "adidas", "mlb", "pero"];
   const [checked, setChecked] = useState([]);
 
@@ -17,9 +14,7 @@ function SideBar() {
     }
     setChecked(listChecked);
 
-    filterProduct(listChecked);
-    // const b = products.filter((item) => listChecked.includes(item.brand));
-    // console.log(b);
+    onFilter(listChecked);
   };
 
   return (
@@ -28,8 +23,7 @@ function SideBar() {
       <BrandName>
         {checkList.map((item, index) => (
           <Label key={index}>
-            <CheckBox value={item} type="checkbox" onChange={handleCheck} />
-
+            <CheckBox value={item} type="checkbox" onClick={handleCheck} />
             {item}
           </Label>
         ))}
