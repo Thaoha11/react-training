@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import Popup from "../Popup";
 import ConfirmDeletePopup from "../DeletePopup";
 import Button from "../Button";
@@ -32,6 +32,7 @@ function ItemInList({ onDelete, products, onUpdate }) {
     onDelete(selectedDeleteProductId);
     setSelectedDeleteProductId(null);
   };
+  // Update product
   const handleUpdate = (product) => {
     onUpdate(product);
   };
@@ -41,6 +42,7 @@ function ItemInList({ onDelete, products, onUpdate }) {
         <Item key={product.id}>
           <LeftSide>
             <ImageItem src={product.image} />
+
             <Icon>
               <Button
                 className="edit"
@@ -54,6 +56,7 @@ function ItemInList({ onDelete, products, onUpdate }) {
               ></Button>
             </Icon>
           </LeftSide>
+
           <RightSide>
             <NameItem> {product.name}</NameItem>
             <DescrItem>Price: {product.price} $ </DescrItem>
@@ -77,4 +80,4 @@ function ItemInList({ onDelete, products, onUpdate }) {
     </ItemLs>
   );
 }
-export default ItemInList;
+export default memo(ItemInList);
