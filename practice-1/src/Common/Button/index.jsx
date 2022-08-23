@@ -1,4 +1,5 @@
 import { CommonButton } from "./styles";
+import React from "react";
 
 function Button({ onClicked, text, className, icon }) {
   return (

@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 import Popup from "../Popup";
-import ConfirmDeletePopup from "../DeletePopup";
+import ConfirmDeletePopup from "../ConfirmDeletePopup";
 import Button from "../Button";
 
 import {

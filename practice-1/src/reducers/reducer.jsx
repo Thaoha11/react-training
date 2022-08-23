@@ -4,23 +4,22 @@ import {
   UPDATE_PRODUCT,
   SEARCH_PRODUCT,
   FILTER_PRODUCT,
+  listProduct,
 } from "../store/constants";
 
-// get from localStorage
-const listProduct = JSON.parse(localStorage.getItem("listProduct")) || [];
-
+// init state
 const initState = {
   products: listProduct,
   isSearchActive: false,
   filteredList: [],
 };
 
-function reducer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
     case ADD_PRODUCT: {
       const products = [...state.products, action.payload];
+      // save data to localStorage
       localStorage.setItem("listProduct", JSON.stringify(products));
-
       return {
         ...state,
         products: products,
@@ -41,6 +40,7 @@ function reducer(state, action) {
     case UPDATE_PRODUCT: {
       const updatedProduct = action.payload;
       const updatedProducts = state.products.map((product) => {
+        // get updated product
         if (product.id === updatedProduct.id) {
           return updatedProduct;
         }
@@ -69,7 +69,7 @@ function reducer(state, action) {
 
     case FILTER_PRODUCT: {
       const listChecked = action.payload;
-
+      // if includes(item.brand) is true,then filter items
       const filterList = state.products.filter((item) =>
         listChecked.includes(item.brand)
       );
@@ -83,7 +83,7 @@ function reducer(state, action) {
     default:
       throw new Error("Invalid action");
   }
-}
+};
 
 export { initState };
 export default reducer;

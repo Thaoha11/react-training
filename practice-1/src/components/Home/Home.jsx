@@ -3,6 +3,7 @@ import SideBar from "../Sidebar";
 import ItemInList from "../../Common/ItemInList";
 import Button from "../../Common/Button";
 import Popup from "../../Common/Popup";
+
 import {
   SectionBackGroundStyles,
   Wrapper,
@@ -29,6 +30,7 @@ function Home() {
   } = useContext(StoreContext);
 
   const [show, setShow] = useState(false);
+
   // show popup
   const handleOpenPopup = () => {
     setShow(!show);
@@ -41,8 +43,7 @@ function Home() {
   return (
     <SectionBackGroundStyles>
       <Wrapper>
-        <Title>products</Title>
-
+        <Title> products</Title>
         <AddNew>Add new </AddNew>
         <Button onClicked={handleOpenPopup} icon="fas fa-plus-square" />
         {show && (
@@ -60,8 +61,9 @@ function Home() {
               <Line>
                 <TitleText>List item</TitleText>
               </Line>
-
               <ItemInList
+                // check filtered list if filtered list not contains any render all products
+                // else render filtered products follow filtered checkbox
                 products={filteredList.length === 0 ? products : filteredList}
                 onDelete={deleteProduct}
                 onUpdate={updateProduct}

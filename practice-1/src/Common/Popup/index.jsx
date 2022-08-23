@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
-import { options } from "../helpers/constants";
+import { useState, memo } from "react";
+import { options } from "../../store/constants";
 import {
   ModalWrapper,
   Modal,
@@ -19,19 +19,15 @@ function Popup({
   onClosePopup,
   text,
   defaultValue = {},
-
   onSubmit,
   OnIsUpdate,
 }) {
   // error message
   const [errors, setErrors] = useState([]);
 
-  // success messgage
-  const [msg, setMsg] = useState("");
-
   const [inputs, setInputs] = useState(defaultValue);
 
-  // get value input
+  // get value input from DOM form input
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -40,10 +36,12 @@ function Popup({
 
   // validate form
   const validate = () => {
-    const errors = [];
+    const errors = {
+      errorName: "",
+    };
 
     if (!inputs.name) {
-      errors.push("Please enter email");
+      errors.errorName = "bla bla";
     }
 
     if (!inputs.price) {
@@ -59,7 +57,7 @@ function Popup({
     }
 
     if (!inputs.image) {
-      errors.push("Please enter image");
+      errors.push("Please enter brand");
     }
 
     return errors;
@@ -74,18 +72,17 @@ function Popup({
       return;
     }
 
-    // update data
+    // update products
     if (inputs.id) {
       OnIsUpdate(inputs);
       onClosePopup();
     }
-    // submit data
+    // add products
     else {
       inputs.id = uuidv4();
       onSubmit({ ...inputs });
 
       setInputs("");
-      setMsg("Create successful products ");
     }
   };
 
@@ -94,11 +91,8 @@ function Popup({
       <Modal>
         <Title> {text}</Title>
         {errors.map((errors, index) => (
-          <Errors key={index}>Error: {errors}</Errors>
+          <Errors key={index}>{errors}</Errors>
         ))}
-
-        <Errors notice>{msg}</Errors>
-
         <FormSubmit onSubmit={handleSubmit}>
           <Label>Name</Label>
           <InputProduct
@@ -108,10 +102,9 @@ function Popup({
             onChange={handleChange}
           />
 
-          <Errors>{errors.name}</Errors>
           <Label>Price</Label>
           <InputProduct
-            type="text"
+            type="number"
             name="price"
             value={inputs.price || ""}
             onChange={handleChange}
@@ -151,4 +144,4 @@ function Popup({
   );
 }
 
-export default Popup;
+export default memo(Popup);

@@ -17,7 +17,7 @@ const Title = styled.h1`
   text-align: center;
   font-family: "Inter";
   text-transform: uppercase;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 `;
 
 const Content = styled.div`

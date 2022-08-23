@@ -49,9 +49,8 @@ const SelectBrand = styled.select`
 
 const ValueOption = styled.option``;
 const Errors = styled.p`
-  color: #d27016;
+  color: #f02849;
   text-align: center;
-  line-height: 8px;
 `;
 
 const ButtonWrapper = styled.div`
