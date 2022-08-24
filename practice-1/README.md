@@ -25,7 +25,6 @@ This document provides information about ReactJS practice. Build List of product
 # Targets
 
 - Build an application for managing product using React
-- Implement storybook
 - Apply useContext and useReducer for state management
 - Using React Hooks
 - Check re-render and using hook to avoid re-render.
