@@ -24,7 +24,12 @@ const SideBar = ({ onFilter }) => {
       <BrandName>
         {checkList.map((item, index) => (
           <Label key={index}>
-            <CheckBox value={item} type="checkbox" onClick={handleCheck} />
+            <CheckBox
+              value={item}
+              type="checkbox"
+              onClick={handleCheck}
+              disabled={false}
+            />
             {item}
           </Label>
         ))}

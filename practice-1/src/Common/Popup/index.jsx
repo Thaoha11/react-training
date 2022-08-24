@@ -77,7 +77,7 @@ const Popup = ({
     else {
       inputs.id = uuidv4();
       onSubmit({ ...inputs });
-
+      onClosePopup();
       setInputs("");
     }
   };
