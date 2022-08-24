@@ -6,26 +6,34 @@ import {
   FILTER_PRODUCT,
 } from "../store/constants";
 
-export const addProduct = (payload) => ({
+const addProduct = (payload) => ({
   type: ADD_PRODUCT,
   payload,
 });
 
-export const deleteProduct = (payload) => ({
+const deleteProduct = (payload) => ({
   type: DELETE_PRODUCT,
   payload,
 });
 
-export const updateProduct = (payload) => ({
+const updateProduct = (payload) => ({
   type: UPDATE_PRODUCT,
   payload,
 });
 
-export const searchProduct = (payload) => ({
+const searchProduct = (payload) => ({
   type: SEARCH_PRODUCT,
   payload,
 });
-export const filterProduct = (payload) => ({
+const filterProduct = (payload) => ({
   type: FILTER_PRODUCT,
   payload,
 });
+
+export {
+  addProduct,
+  deleteProduct,
+  updateProduct,
+  searchProduct,
+  filterProduct,
+};

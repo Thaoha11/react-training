@@ -1,7 +1,7 @@
 import { CommonButton } from "./styles";
 import React from "react";
 
-function Button({ onClicked, text, className, icon }) {
+const Button = ({ onClicked, text, className, icon }) => {
   return (
     <>
       <CommonButton onClick={onClicked} className={className}>
@@ -9,6 +9,6 @@ function Button({ onClicked, text, className, icon }) {
       </CommonButton>
     </>
   );
-}
+};
 
 export default Button;

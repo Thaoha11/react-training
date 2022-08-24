@@ -7,14 +7,14 @@ import {
   Button,
 } from "./styles";
 
-function ConfirmDeletePopup({ onClosePopup, onOK }) {
+const ConfirmDeletePopup = ({ onClosePopup, onSave }) => {
   return (
     <ModalWrapper>
       <Modal>
         <Title>Delete</Title>
         <Content>Are you sure delete this products ?</Content>
         <ButtonWrapper>
-          <Button yes onClick={onOK}>
+          <Button yes onClick={onSave}>
             Yes
           </Button>
           <Button onClick={onClosePopup}>No</Button>
@@ -22,5 +22,5 @@ function ConfirmDeletePopup({ onClosePopup, onOK }) {
       </Modal>
     </ModalWrapper>
   );
-}
+};
 export default ConfirmDeletePopup;

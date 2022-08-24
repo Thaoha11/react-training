@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { LeftSidebar, BrandTitle, BrandName, CheckBox, Label } from "./styles";
 
-function SideBar({ onFilter }) {
+const SideBar = ({ onFilter }) => {
   const checkList = ["nike", "adidas", "mlb", "pero"];
   const [checked, setChecked] = useState([]);
 
   const handleCheck = (e) => {
     let listChecked = [...checked];
     if (e.target.checked) {
+      // add value to array when checked
       listChecked = [...checked, e.target.value];
     } else {
+      // remove value when unchecked
       listChecked.splice(checked.indexOf(e.target.value), 1);
     }
     setChecked(listChecked);
-
     onFilter(listChecked);
   };
 
@@ -30,5 +31,6 @@ function SideBar({ onFilter }) {
       </BrandName>
     </LeftSidebar>
   );
-}
+};
+
 export default SideBar;

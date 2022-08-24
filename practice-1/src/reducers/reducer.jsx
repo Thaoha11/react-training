@@ -27,13 +27,14 @@ const reducer = (state, action) => {
     }
 
     case DELETE_PRODUCT: {
-      // localStorage.removeItem("listProduct", JSON.stringify(action.payload));
+      // Delete by id
+      const filtered = state.products.filter(
+        (product) => product.id !== action.payload
+      );
+      localStorage.setItem("listProduct", JSON.stringify(filtered));
       return {
         ...state,
-        // Delete by id
-        products: state.products.filter(
-          (product) => product.id !== action.payload
-        ),
+        products: filtered,
       };
     }
 
@@ -69,7 +70,7 @@ const reducer = (state, action) => {
 
     case FILTER_PRODUCT: {
       const listChecked = action.payload;
-      // if includes(item.brand) is true,then filter items
+      // check includes brand is true,then filter items
       const filterList = state.products.filter((item) =>
         listChecked.includes(item.brand)
       );

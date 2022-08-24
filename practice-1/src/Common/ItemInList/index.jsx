@@ -14,15 +14,15 @@ import {
   ItemLs,
 } from "./styles";
 
-function ItemInList({ onDelete, products, onUpdate }) {
+const ItemInList = ({ onDelete, products, onUpdate }) => {
   const [selectedDeleteProductId, setSelectedDeleteProductId] = useState(null);
   const [selectedUpdateProductId, setSelectedUpdateProductId] = useState(null);
 
-  // Show DeletePopup
+  // Show confirm DeletePopup
   const handleOpen = (id) => {
     setSelectedDeleteProductId(id);
   };
-  // Close popup
+  // Close popup and confirm DeletePopup
   const handleClose = () => {
     setSelectedDeleteProductId(null);
     setSelectedUpdateProductId(null);
@@ -36,13 +36,13 @@ function ItemInList({ onDelete, products, onUpdate }) {
   const handleUpdate = (product) => {
     onUpdate(product);
   };
+
   return (
     <ItemLs>
       {products.map((product) => (
         <Item key={product.id}>
           <LeftSide>
             <ImageItem src={product.image} />
-
             <Icon>
               <Button
                 className="edit"
@@ -66,7 +66,7 @@ function ItemInList({ onDelete, products, onUpdate }) {
       ))}
       {/* show delete popup */}
       {!!selectedDeleteProductId && (
-        <ConfirmDeletePopup onOK={handleDelete} onClosePopup={handleClose} />
+        <ConfirmDeletePopup onSave={handleDelete} onClosePopup={handleClose} />
       )}
       {/* show update popup */}
       {!!selectedUpdateProductId && (
@@ -74,10 +74,10 @@ function ItemInList({ onDelete, products, onUpdate }) {
           text="Edit products"
           defaultValue={selectedUpdateProductId}
           onClosePopup={handleClose}
-          OnIsUpdate={handleUpdate}
+          onIsUpdate={handleUpdate}
         />
       )}
     </ItemLs>
   );
-}
+};
 export default memo(ItemInList);

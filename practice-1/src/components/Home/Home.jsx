@@ -18,7 +18,7 @@ import {
 import { useContext, useState } from "react";
 import { StoreContext } from "../../store";
 
-function Home() {
+const Home = () => {
   const {
     addProduct,
     updateProduct,
@@ -74,5 +74,5 @@ function Home() {
       </Wrapper>
     </SectionBackGroundStyles>
   );
-}
+};
 export default Home;

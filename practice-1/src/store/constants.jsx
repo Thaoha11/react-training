@@ -4,7 +4,7 @@ const DELETE_PRODUCT = "delete_product";
 const SEARCH_PRODUCT = "search_product";
 const UPDATE_PRODUCT = "update_product";
 const FILTER_PRODUCT = "filter_product";
-
+//option values
 const options = [
   { value: "", text: "--Choose an option--" },
   { value: "nike", text: "Nike" },
@@ -14,6 +14,7 @@ const options = [
 ];
 // get from localStorage
 const listProduct = JSON.parse(localStorage.getItem("listProduct")) || [];
+
 export {
   ADD_PRODUCT,
   DELETE_PRODUCT,

@@ -13,12 +13,10 @@ const Modal = styled.div`
   position: absolute;
   width: 518px;
   height: 600px;
-
   background: #83bdc9;
   font-family: "Inter";
   z-index: 39;
   border-radius: 20px;
-
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

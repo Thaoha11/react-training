@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputWrapper, SearchInput, SearchButton } from "./styles";
 
-function SearchProducts({ onSearch }) {
+const SearchProducts = ({ onSearch }) => {
   const [inputs, setInputs] = useState("");
 
   const handleChange = (e) => {
@@ -20,6 +20,6 @@ function SearchProducts({ onSearch }) {
       </SearchButton>
     </InputWrapper>
   );
-}
+};
 
 export default SearchProducts;

@@ -15,7 +15,7 @@ This document provides information about ReactJS practice. Build List of product
 
 # Timeline
 
-14 working days (July 06 to July 22, 2022)
+25 working days
 
 # Plan
 

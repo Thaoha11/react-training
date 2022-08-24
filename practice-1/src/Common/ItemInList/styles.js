@@ -31,6 +31,7 @@ const NameItem = styled.p`
   font-size: 28px;
   font-weight: 700;
   color: #0f1a42;
+  text-transform: capitalize;
 `;
 const DescrItem = styled.p`
   font-size: 19px;

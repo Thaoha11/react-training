@@ -3,6 +3,12 @@ import Context from "./Context";
 import reducer, { initState } from "../reducers/reducer";
 import { actions } from ".";
 
+/**
+ * Component provider list container
+ * @param children is react node
+ * @returns provider with value state and disptach
+ */
+
 function Provider({ children }) {
   const [state, dispatch] = useReducer(reducer, initState);
 
