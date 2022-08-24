@@ -15,15 +15,15 @@ import {
   Button,
 } from "./styles";
 
-function Popup({
+const Popup = ({
   onClosePopup,
   text,
   defaultValue = {},
   onSubmit,
-  OnIsUpdate,
-}) {
+  onIsUpdate,
+}) => {
   // error message
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
 
   const [inputs, setInputs] = useState(defaultValue);
 
@@ -34,47 +34,43 @@ function Popup({
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  // validate form
+  // validate form input
   const validate = () => {
-    const errors = {
-      errorName: "",
-    };
-
+    const msg = {};
+    // check inputs empty
     if (!inputs.name) {
-      errors.errorName = "bla bla";
+      msg.name = "Please enter name";
     }
 
     if (!inputs.price) {
-      errors.push("Please enter price");
+      msg.price = "Please enter price";
     } else {
       if (Number(inputs.price) < 0) {
-        errors.push("Wrong type of price");
+        msg.price = "Wrong type of price";
       }
     }
 
     if (!inputs.brand) {
-      errors.push("Please enter brand");
+      msg.brand = "Please enter brand";
     }
 
     if (!inputs.image) {
-      errors.push("Please enter brand");
+      msg.image = "Please enter image";
     }
 
-    return errors;
+    setErrors(msg);
+    if (Object.keys(msg).length > 0) return false;
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = validate();
-
-    if (errors.length > 0) {
-      setErrors(errors);
-      return;
-    }
+    const isValid = validate();
+    if (!isValid) return;
 
     // update products
     if (inputs.id) {
-      OnIsUpdate(inputs);
+      onIsUpdate(inputs);
       onClosePopup();
     }
     // add products
@@ -90,9 +86,6 @@ function Popup({
     <ModalWrapper>
       <Modal>
         <Title> {text}</Title>
-        {errors.map((errors, index) => (
-          <Errors key={index}>{errors}</Errors>
-        ))}
         <FormSubmit onSubmit={handleSubmit}>
           <Label>Name</Label>
           <InputProduct
@@ -101,6 +94,7 @@ function Popup({
             value={inputs.name || ""}
             onChange={handleChange}
           />
+          <Errors>{errors.name}</Errors>
 
           <Label>Price</Label>
           <InputProduct
@@ -109,6 +103,7 @@ function Popup({
             value={inputs.price || ""}
             onChange={handleChange}
           />
+          <Errors>{errors.price}</Errors>
 
           <Label>Brand</Label>
           <SelectBrand
@@ -122,6 +117,7 @@ function Popup({
               </ValueOption>
             ))}
           </SelectBrand>
+          <Errors>{errors.brand}</Errors>
 
           <Label>Image</Label>
           <InputProduct
@@ -129,6 +125,7 @@ function Popup({
             value={inputs.image || ""}
             onChange={handleChange}
           />
+          <Errors>{errors.image}</Errors>
 
           <ButtonWrapper>
             <Button save type="submit" value="Submit">
@@ -142,6 +139,6 @@ function Popup({
       </Modal>
     </ModalWrapper>
   );
-}
+};
 
 export default memo(Popup);
