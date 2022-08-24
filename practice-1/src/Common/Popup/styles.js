@@ -12,7 +12,7 @@ const ModalWrapper = styled.div`
 const Modal = styled.div`
   position: absolute;
   width: 518px;
-  height: 551px;
+  height: 600px;
 
   background: #83bdc9;
   font-family: "Inter";
@@ -27,12 +27,13 @@ const Title = styled.p`
   text-align: center;
   font-weight: 400;
   font-size: 36px;
+  line-height: 10px;
 `;
 const FormSubmit = styled.form`
   margin-left: 35px;
 `;
 const Label = styled.p`
-  font-size: 16px;
+  font-size: 18px;
 `;
 const InputProduct = styled.input`
   width: 427px;
@@ -49,15 +50,16 @@ const SelectBrand = styled.select`
 
 const ValueOption = styled.option``;
 const Errors = styled.p`
-  color: #f02849;
-  text-align: center;
+  color: #bd0f2b;
+  line-height: 1px;
+  font-size: 15px;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 33px;
+  margin-top: 38px;
 `;
 const Button = styled.button`
   cursor: pointer;
