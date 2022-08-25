@@ -7,7 +7,7 @@ import {
   Button,
 } from "./styles";
 
-const ConfirmDeletePopup = ({ onClosePopup, onSave }) => {
+const ConfirmPopup = ({ onClosePopup, onSave }) => {
   return (
     <ModalWrapper>
       <Modal>
@@ -23,4 +23,4 @@ const ConfirmDeletePopup = ({ onClosePopup, onSave }) => {
     </ModalWrapper>
   );
 };
-export default ConfirmDeletePopup;
+export default ConfirmPopup;

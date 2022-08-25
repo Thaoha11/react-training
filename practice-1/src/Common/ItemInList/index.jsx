@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 import Popup from "../Popup";
-import ConfirmDeletePopup from "../ConfirmDeletePopup";
+import ConfirmPopup from "../ConfirmPopup";
 import Button from "../Button";
 
 import {
@@ -66,7 +66,7 @@ const ItemInList = ({ onDelete, products, onUpdate }) => {
       ))}
       {/* show delete popup */}
       {!!selectedDeleteProductId && (
-        <ConfirmDeletePopup onSave={handleDelete} onClosePopup={handleClose} />
+        <ConfirmPopup onSave={handleDelete} onClosePopup={handleClose} />
       )}
       {/* show update popup */}
       {!!selectedUpdateProductId && (
