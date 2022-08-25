@@ -6,28 +6,28 @@ import {
   FILTER_PRODUCT,
 } from "../store/constants";
 
-const addProduct = (payload) => ({
+const addProduct = (inputs) => ({
   type: ADD_PRODUCT,
-  payload,
+  inputs,
 });
 
-const deleteProduct = (payload) => ({
+const deleteProduct = (id) => ({
   type: DELETE_PRODUCT,
-  payload,
+  id,
 });
 
-const updateProduct = (payload) => ({
+const updateProduct = (item) => ({
   type: UPDATE_PRODUCT,
-  payload,
+  item,
 });
 
-const searchProduct = (payload) => ({
+const searchProduct = (name) => ({
   type: SEARCH_PRODUCT,
-  payload,
+  name,
 });
-const filterProduct = (payload) => ({
+const filterProduct = (brand) => ({
   type: FILTER_PRODUCT,
-  payload,
+  brand,
 });
 
 export {
