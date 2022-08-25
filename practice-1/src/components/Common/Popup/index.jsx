@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState, memo } from "react";
-import { options } from "../../store/constants";
+import { options } from "../../../constants/constants";
 import {
   ModalWrapper,
   Modal,

@@ -4,7 +4,7 @@ import {
   SEARCH_PRODUCT,
   UPDATE_PRODUCT,
   FILTER_PRODUCT,
-} from "../store/constants";
+} from "../constants/constants";
 
 const addProduct = (inputs) => ({
   type: ADD_PRODUCT,

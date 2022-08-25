@@ -5,7 +5,7 @@ import {
   SEARCH_PRODUCT,
   FILTER_PRODUCT,
   listProduct,
-} from "../store/constants";
+} from "../constants/constants";
 
 // init state
 const initState = {
@@ -17,7 +17,7 @@ const initState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case ADD_PRODUCT: {
-      const products = [...state.products, action.payload];
+      const products = [...state.products, action.inputs];
       // save data to localStorage
       localStorage.setItem("listProduct", JSON.stringify(products));
       return {
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
     case DELETE_PRODUCT: {
       // Delete by id
       const filtered = state.products.filter(
-        (product) => product.id !== action.payload
+        (product) => product.id !== action.id
       );
       localStorage.setItem("listProduct", JSON.stringify(filtered));
       return {
@@ -39,7 +39,7 @@ const reducer = (state, action) => {
     }
 
     case UPDATE_PRODUCT: {
-      const updatedProduct = action.payload;
+      const updatedProduct = action.item;
       const updatedProducts = state.products.map((product) => {
         // get updated product
         if (product.id === updatedProduct.id) {
@@ -63,13 +63,13 @@ const reducer = (state, action) => {
           (product) =>
             product.name
               .toLowerCase()
-              .search(action.payload.toLowerCase().trim()) !== -1
+              .search(action.name.toLowerCase().trim()) !== -1
         ),
       };
     }
 
     case FILTER_PRODUCT: {
-      const listChecked = action.payload;
+      const listChecked = action.brand;
       // check includes brand is true,then filter items
       const filterList = state.products.filter((item) =>
         listChecked.includes(item.brand)

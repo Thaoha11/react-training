@@ -1,8 +1,8 @@
 import SearchProducts from "../SearchProducts";
 import SideBar from "../Sidebar";
-import ItemInList from "../../Common/ItemInList";
-import Button from "../../Common/Button";
-import Popup from "../../Common/Popup";
+import ItemInList from "../Common/ItemInList";
+import Button from "../Common/Button";
+import Popup from "../Common/Popup";
 
 import {
   SectionBackGroundStyles,
