@@ -40,13 +40,9 @@ const reducer = (state, action) => {
 
     case UPDATE_PRODUCT: {
       const updatedProduct = action.item;
-      const updatedProducts = state.products.map((product) => {
-        // get updated product
-        if (product.id === updatedProduct.id) {
-          return updatedProduct;
-        }
-        return product;
-      });
+      const updatedProducts = state.products.map((product) =>
+        product.id === updatedProduct.id ? updatedProduct : product
+      );
       localStorage.setItem("listProduct", JSON.stringify(updatedProducts));
 
       return {
