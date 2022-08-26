@@ -82,7 +82,7 @@ const reducer = (state, action) => {
     }
 
     default:
-      throw new Error("Invalid action");
+      return state;
   }
 };
 
