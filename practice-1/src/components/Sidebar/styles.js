@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LeftSidebar = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -58,4 +58,4 @@ const Label = styled.label`
   padding-top: 9px;
   padding-left: 26px;
 `;
-export { LeftSidebar, BrandTitle, BrandName, CheckBox, Label };
+export { Wrapper, BrandTitle, BrandName, CheckBox, Label };
