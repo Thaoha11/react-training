@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ItemLs = styled.div`
+const ProductItem = styled.div`
   width: 900px;
   height: auto;
   display: flex;
@@ -9,20 +9,17 @@ const ItemLs = styled.div`
 `;
 const Item = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 325px;
   margin-bottom: 30px;
   margin-left: 79px;
 `;
-const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+
 const ImageItem = styled.img`
   width: 170px;
   height: 215px;
 `;
-const RightSide = styled.div`
+const InformationItem = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
@@ -33,33 +30,29 @@ const NameItem = styled.p`
   color: #0f1a42;
   text-transform: capitalize;
 `;
-const DescrItem = styled.p`
+const DescriptionItem = styled.p`
   font-size: 19px;
   font-weight: 600;
   text-transform: capitalize;
 `;
 
-const Icon = styled.div`
+const IconButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  width: 170px;
 `;
-const FontAwesomeIcon = styled.button`
-  font-size: 25px;
-  border: none;
-  background-color: #dae5d0;
-  margin-top: 10px;
-  cursor: pointer;
-  color: ${(props) => (props.edit ? "#A3A0C2" : "#C36C1C")};
+
+const ContentItem = styled.div`
+  display: flex;
 `;
 export {
-  ItemLs,
+  ProductItem,
   Item,
-  LeftSide,
   ImageItem,
-  RightSide,
+  InformationItem,
   NameItem,
-  DescrItem,
-  Icon,
-  FontAwesomeIcon,
+  DescriptionItem,
+  IconButton,
+  ContentItem,
 };

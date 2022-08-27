@@ -5,13 +5,13 @@ import Button from "../Button";
 
 import {
   Item,
-  LeftSide,
   ImageItem,
-  RightSide,
+  InformationItem,
   NameItem,
-  DescrItem,
-  Icon,
-  ItemLs,
+  DescriptionItem,
+  IconButton,
+  ContentItem,
+  ProductItem,
 } from "./styles";
 
 const ItemInList = ({ onDelete, products, onUpdate }) => {
@@ -38,30 +38,30 @@ const ItemInList = ({ onDelete, products, onUpdate }) => {
   };
 
   return (
-    <ItemLs>
+    <ProductItem>
       {products.map((product) => (
         <Item key={product.id}>
-          <LeftSide>
+          <ContentItem>
             <ImageItem src={product.image} />
-            <Icon>
-              <Button
-                className="edit"
-                icon="fas fa-edit"
-                onClicked={() => setSelectedUpdateProductId(product)}
-              ></Button>
-              <Button
-                onClicked={() => handleOpen(product.id)}
-                className="delete"
-                icon="fas fa-trash-alt"
-              ></Button>
-            </Icon>
-          </LeftSide>
+            <InformationItem>
+              <NameItem> {product.name}</NameItem>
+              <DescriptionItem>Price: {product.price} $ </DescriptionItem>
+              <DescriptionItem>Brand: {product.brand}</DescriptionItem>
+            </InformationItem>
+          </ContentItem>
 
-          <RightSide>
-            <NameItem> {product.name}</NameItem>
-            <DescrItem>Price: {product.price} $ </DescrItem>
-            <DescrItem>Brand: {product.brand}</DescrItem>
-          </RightSide>
+          <IconButton>
+            <Button
+              className="edit"
+              icon="fas fa-edit"
+              onClicked={() => setSelectedUpdateProductId(product)}
+            ></Button>
+            <Button
+              onClicked={() => handleOpen(product.id)}
+              className="delete"
+              icon="fas fa-trash-alt"
+            ></Button>
+          </IconButton>
         </Item>
       ))}
       {/* show delete popup */}
@@ -77,7 +77,7 @@ const ItemInList = ({ onDelete, products, onUpdate }) => {
           onIsUpdate={handleUpdate}
         />
       )}
-    </ItemLs>
+    </ProductItem>
   );
 };
 export default memo(ItemInList);
