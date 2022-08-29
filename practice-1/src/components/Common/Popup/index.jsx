@@ -45,8 +45,8 @@ const Popup = ({
     if (!inputs.price) {
       msg.price = "Please enter price";
     } else {
-      if (Number(inputs.price) < 0) {
-        msg.price = "Wrong type of price";
+      if (Number(inputs.price) <= 0) {
+        msg.price = "Price must be greater than 0";
       }
     }
 

@@ -6,7 +6,7 @@ import {
   FILTER_PRODUCT,
   listProduct,
 } from "../constants/constants";
-
+import { saveLocalStorage } from "../untils/helper";
 // init state
 const initState = {
   products: listProduct,
@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     case ADD_PRODUCT: {
       const products = [...state.products, action.inputs];
       // save data to localStorage
-      localStorage.setItem("listProduct", JSON.stringify(products));
+      saveLocalStorage(products);
       return {
         ...state,
         products: products,
@@ -31,7 +31,7 @@ const reducer = (state, action) => {
       const filtered = state.products.filter(
         (product) => product.id !== action.id
       );
-      localStorage.setItem("listProduct", JSON.stringify(filtered));
+      saveLocalStorage(filtered);
       return {
         ...state,
         products: filtered,
@@ -43,7 +43,7 @@ const reducer = (state, action) => {
       const updatedProducts = state.products.map((product) =>
         product.id === updatedProduct.id ? updatedProduct : product
       );
-      localStorage.setItem("listProduct", JSON.stringify(updatedProducts));
+      saveLocalStorage(updatedProducts);
 
       return {
         ...state,

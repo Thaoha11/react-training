@@ -56,7 +56,7 @@ const Home = () => {
         <Content>
           <SearchProducts onSearch={searchProduct} />
           <Row>
-            <SideBar onFilter={filterProduct} />
+            <SideBar onFilter={filterProduct} products={products} />
             <ListItem>
               <Line>
                 <TitleText>List item</TitleText>

@@ -12,8 +12,9 @@ const options = [
   { value: "mlb", text: "MLB" },
   { value: "pero", text: "Pero" },
 ];
+const KEY = "listProduct";
 // get from localStorage
-const listProduct = JSON.parse(localStorage.getItem("listProduct")) || [];
+const listProduct = JSON.parse(localStorage.getItem(KEY)) || [];
 
 export {
   ADD_PRODUCT,
@@ -23,4 +24,5 @@ export {
   FILTER_PRODUCT,
   options,
   listProduct,
+  KEY,
 };
