@@ -58,13 +58,13 @@ git checkout branch feature/practice-1
 cd practice-1
 ```
 
-- step 3 :
+- Step 3 :
 
 ```bash
 npm i
 ```
 
-- step 4 : run project
+- Step 4 : run project
 
 ```bash
 npm start
