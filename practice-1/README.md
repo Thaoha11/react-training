@@ -4,10 +4,6 @@
 
 This document provides information about ReactJS practice. Build List of products website
 
-# Screenshots
-
-![Screenshot](./src/assets/images/image.png)
-
 # Technical
 
 - HTML5/CSS3
@@ -28,6 +24,14 @@ This document provides information about ReactJS practice. Build List of product
 - Apply useContext and useReducer for state management
 - Using React Hooks
 - Check re-render and using hook to avoid re-render.
+
+# Main app features:
+
+- Users could create new products
+- Users could update products
+- Users could delete products by id
+- Users could filter the list of products by brand
+- Users could search the list of products by name
 
 # REFERENCES
 
