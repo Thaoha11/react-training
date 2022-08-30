@@ -72,12 +72,6 @@ const TitleText = styled.h2`
     z-index: -2;
   }
 `;
-const AddNew = styled.p`
-  font-size: 16px;
-  font-family: "Inter";
-  margin-bottom: 2px;
-  position: relative;
-`;
 
 export {
   SectionBackGroundStyles,
@@ -88,5 +82,4 @@ export {
   TitleText,
   ListItem,
   Line,
-  AddNew,
 };

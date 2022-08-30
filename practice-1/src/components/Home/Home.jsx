@@ -13,7 +13,6 @@ import {
   ListItem,
   Line,
   TitleText,
-  AddNew,
 } from "./style";
 import { useContext, useState } from "react";
 import { StoreContext } from "../../store";
@@ -44,8 +43,9 @@ const Home = () => {
     <SectionBackGroundStyles>
       <Wrapper>
         <Title> products</Title>
-        <AddNew>Add new </AddNew>
+
         <Button onClicked={handleOpenPopup} icon="fas fa-plus-square" />
+
         {show && (
           <Popup
             text="Create product"
