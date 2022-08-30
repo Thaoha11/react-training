@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Wrapper, BrandTitle, BrandName, CheckBox, Label } from "./styles";
+import {
+  Wrapper,
+  BrandTitle,
+  BrandName,
+  CheckBox,
+  BrandNameItem,
+} from "./styles";
 
 const SideBar = ({ onFilter, products }) => {
   const checkList = ["nike", "adidas", "mlb", "pero"];
@@ -23,7 +29,7 @@ const SideBar = ({ onFilter, products }) => {
       <BrandTitle>Brand</BrandTitle>
       <BrandName>
         {checkList.map((item, index) => (
-          <Label key={index}>
+          <BrandNameItem key={index}>
             <CheckBox
               value={item}
               type="checkbox"
@@ -31,7 +37,7 @@ const SideBar = ({ onFilter, products }) => {
               disabled={products.length === 0 ? true : false}
             />
             {item}
-          </Label>
+          </BrandNameItem>
         ))}
       </BrandName>
     </Wrapper>

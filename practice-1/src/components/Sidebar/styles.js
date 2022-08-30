@@ -50,12 +50,13 @@ const CheckBox = styled.input`
   border-radius: 5px;
   cursor: pointer;
 `;
-const Label = styled.label`
+const BrandNameItem = styled.div`
   font-size: 15px;
   width: 120px;
   border-radius: 15px;
   text-transform: uppercase;
   padding-top: 9px;
   padding-left: 26px;
+  line-height: 12px;
 `;
-export { Wrapper, BrandTitle, BrandName, CheckBox, Label };
+export { Wrapper, BrandTitle, BrandName, CheckBox, BrandNameItem };
