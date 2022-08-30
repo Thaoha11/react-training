@@ -6,7 +6,7 @@ import {
   FILTER_PRODUCT,
   listProduct,
 } from "../constants/constants";
-import { saveLocalStorage } from "../untils/helper";
+import { saveLocalStorage } from "../utils/helper";
 // init state
 const initState = {
   products: listProduct,
@@ -82,5 +82,4 @@ const reducer = (state, action) => {
   }
 };
 
-export { initState };
-export default reducer;
+export { initState, reducer };

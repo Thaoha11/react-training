@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import Context from "./Context";
-import reducer, { initState } from "../reducers/product.reducer";
+import { reducer, initState } from "../reducers/product.reducer";
 import { actions } from ".";
 
 /**
