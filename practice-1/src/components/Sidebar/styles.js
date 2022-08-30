@@ -53,10 +53,8 @@ const CheckBox = styled.input`
 const BrandNameItem = styled.div`
   font-size: 15px;
   width: 120px;
-  border-radius: 15px;
   text-transform: uppercase;
   padding-top: 9px;
   padding-left: 26px;
-  line-height: 12px;
 `;
 export { Wrapper, BrandTitle, BrandName, CheckBox, BrandNameItem };
