@@ -1,8 +1,8 @@
 import SearchProducts from "../SearchProducts";
 import SideBar from "../Sidebar";
-import ItemInList from "../Common/ItemInList";
-import Button from "../Common/Button";
-import Popup from "../Common/Popup";
+import ItemInList from "../../Common/ItemInList";
+import Button from "../../Common/Button";
+import Popup from "../../Common/Popup";
 
 import {
   SectionBackGroundStyles,
@@ -15,7 +15,7 @@ import {
   TitleText,
 } from "./style";
 import { useContext, useState } from "react";
-import { StoreContext } from "../../store";
+import { StoreContext } from "../../../store";
 
 const Home = () => {
   const {
