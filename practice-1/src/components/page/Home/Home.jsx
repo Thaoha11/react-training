@@ -18,15 +18,7 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../../../store";
 
 const Home = () => {
-  const {
-    addProduct,
-    updateProduct,
-    searchProduct,
-    deleteProduct,
-    filterProduct,
-    products,
-    filteredList,
-  } = useContext(StoreContext);
+  const { products, filteredList } = useContext(StoreContext);
 
   const [show, setShow] = useState(false);
 
@@ -47,16 +39,12 @@ const Home = () => {
         <Button onClicked={handleOpenPopup} icon="fas fa-plus-square" />
 
         {show && (
-          <Popup
-            text="Create product"
-            onClosePopup={handleClosePopup}
-            onSubmit={addProduct}
-          />
+          <Popup text="Create product" onClosePopup={handleClosePopup} />
         )}
         <Content>
-          <SearchProducts onSearch={searchProduct} />
+          <SearchProducts />
           <Row>
-            <SideBar onFilter={filterProduct} products={products} />
+            <SideBar products={products} />
             <ListItem>
               <Line>
                 <TitleText>List item</TitleText>
@@ -65,8 +53,6 @@ const Home = () => {
                 // check filtered list if filtered list not contains any render all products
                 // else render filtered products follow filtered checkbox
                 products={filteredList.length === 0 ? products : filteredList}
-                onDelete={deleteProduct}
-                onUpdate={updateProduct}
               />
             </ListItem>
           </Row>

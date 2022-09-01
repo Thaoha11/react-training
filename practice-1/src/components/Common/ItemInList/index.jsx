@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, memo, useContext } from "react";
 import Popup from "../Popup";
 import ConfirmPopup from "../ConfirmPopup";
 import Button from "../Button";
@@ -13,8 +13,10 @@ import {
   ContentItem,
   ProductItem,
 } from "./styles";
+import { StoreContext } from "../../../store";
 
-const ItemInList = ({ onDelete, products, onUpdate }) => {
+const ItemInList = ({ products }) => {
+  const { deleteProduct, updateProduct } = useContext(StoreContext);
   const [selectedDeleteProductId, setSelectedDeleteProductId] = useState(null);
   const [selectedUpdateProductId, setSelectedUpdateProductId] = useState(null);
 
@@ -29,12 +31,12 @@ const ItemInList = ({ onDelete, products, onUpdate }) => {
   };
   // Delete products
   const handleDelete = () => {
-    onDelete(selectedDeleteProductId);
+    deleteProduct(selectedDeleteProductId);
     setSelectedDeleteProductId(null);
   };
   // Update product
   const handleUpdate = (product) => {
-    onUpdate(product);
+    updateProduct(product);
   };
 
   return (

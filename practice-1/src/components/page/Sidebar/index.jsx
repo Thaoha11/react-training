@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StoreContext } from "../../../store";
 import {
   Wrapper,
   BrandTitle,
@@ -7,7 +8,8 @@ import {
   BrandNameItem,
 } from "./styles";
 
-const SideBar = ({ onFilter, products }) => {
+const SideBar = () => {
+  const { filterProduct, products } = useContext(StoreContext);
   const checkList = ["nike", "adidas", "mlb", "pero"];
   const [checked, setChecked] = useState([]);
 
@@ -21,7 +23,7 @@ const SideBar = ({ onFilter, products }) => {
       listChecked.splice(checked.indexOf(e.target.value), 1);
     }
     setChecked(listChecked);
-    onFilter(listChecked);
+    filterProduct(listChecked);
   };
 
   return (

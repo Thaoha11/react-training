@@ -10,7 +10,6 @@ import { saveLocalStorage } from "../utils/helper";
 // init state
 const initState = {
   products: listProduct,
-  isSearchActive: false,
   filteredList: [],
 };
 

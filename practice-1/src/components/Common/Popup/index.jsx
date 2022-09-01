@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { useState, memo } from "react";
+import { useState, memo, useContext } from "react";
 import { options } from "../../../constants/constants";
 import {
   ModalWrapper,
@@ -14,14 +14,10 @@ import {
   ButtonWrapper,
   Button,
 } from "./styles";
+import { StoreContext } from "../../../store";
 
-const Popup = ({
-  onClosePopup,
-  text,
-  defaultValue = {},
-  onSubmit,
-  onIsUpdate,
-}) => {
+const Popup = ({ onClosePopup, text, defaultValue = {} }) => {
+  const { addProduct, updateProduct } = useContext(StoreContext);
   // error message
   const [errors, setErrors] = useState("");
 
@@ -70,13 +66,13 @@ const Popup = ({
 
     // update products
     if (inputs.id) {
-      onIsUpdate(inputs);
+      updateProduct(inputs);
       onClosePopup();
     }
     // add products
     else {
       inputs.id = uuidv4();
-      onSubmit({ ...inputs });
+      addProduct({ ...inputs });
       onClosePopup();
       setInputs("");
     }
