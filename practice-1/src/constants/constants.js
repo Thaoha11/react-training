@@ -6,7 +6,6 @@ const UPDATE_PRODUCT = "update_product";
 const FILTER_PRODUCT = "filter_product";
 //option values
 const options = [
-  { value: "", text: "--Choose an option--" },
   { value: "nike", text: "Nike" },
   { value: "adidas", text: "Adidas" },
   { value: "mlb", text: "MLB" },

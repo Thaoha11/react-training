@@ -46,10 +46,6 @@ const Popup = ({ onClosePopup, text, defaultValue = {} }) => {
       }
     }
 
-    if (!inputs.brand) {
-      msg.brand = "Please enter brand";
-    }
-
     if (!inputs.image) {
       msg.image = "Please enter image";
     }

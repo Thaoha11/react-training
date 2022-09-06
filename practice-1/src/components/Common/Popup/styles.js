@@ -12,7 +12,7 @@ const ModalWrapper = styled.div`
 const Modal = styled.div`
   position: absolute;
   width: 518px;
-  height: 600px;
+  height: 580px;
   background: #83bdc9;
   font-family: "Inter";
   z-index: 39;
@@ -38,6 +38,7 @@ const InputProduct = styled.input`
   height: 30px;
   border-radius: 5px;
   border: none;
+  padding-inline-start: 10px;
 `;
 
 const SelectBrand = styled.select`

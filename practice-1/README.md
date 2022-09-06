@@ -1,29 +1,35 @@
 # ReactJS-training
 
-# Overview
+# Overview:
 
 This document provides information about ReactJS practice. Build List of products website
 
-# Technical
+# Technical:
 
 - HTML5/CSS3
 - ReactJS
 
-# Timeline
+# Timeline:
 
 25 working days
 
-# Plan
+# Plan:
 
 - Plan on github [project](https://github.com/Thaoha11/react-training/projects/1)
 - [Estimation](https://docs.google.com/document/d/1ADjTg72i9YvovtZ6MptBo0t1jYReN2OR/edit?usp=sharing&ouid=101599634004198816561&rtpof=true&sd=true)
 
-# Targets
+# Targets:
 
 - Build an application for managing product using React
 - Apply useContext and useReducer for state management
 - Using React Hooks
 - Check re-render and using hook to avoid re-render.
+
+# Development environment:
+
+- Node: v16.16.0
+- npm: v8.11.0
+- react: v18.2.0
 
 # Main app features:
 
@@ -33,12 +39,12 @@ This document provides information about ReactJS practice. Build List of product
 - Users could filter the list of products by brand
 - Users could search the list of products by name
 
-# REFERENCES
+# REFERENCES:
 
 - [ReactJS](https://reactjs.org/docs/thinking-in-react.html)
 - [Styled-Component](https://styled-components.com/docs)
 
-# Installation
+# Installation:
 
 - Step 1 :clone repository
 
@@ -69,3 +75,5 @@ npm i
 ```bash
 npm start
 ```
+
+- Step 5: Open http://localhost:3000/ in your browser to see the Web application.
