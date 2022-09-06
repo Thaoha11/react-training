@@ -1,11 +1,13 @@
 // action
-const ADD_PRODUCT = "add_product";
-const DELETE_PRODUCT = "delete_product";
-const SEARCH_PRODUCT = "search_product";
-const UPDATE_PRODUCT = "update_product";
-const FILTER_PRODUCT = "filter_product";
+const PRODUCT_ITEM = {
+  ADD: "add_product",
+  DELETE: "delete_product",
+  SEARCH: "search_product",
+  UPDATE: "update_product",
+  FILTER: "filter_product",
+};
 //option values
-const options = [
+const OPTION_BRAND = [
   { value: "nike", text: "Nike" },
   { value: "adidas", text: "Adidas" },
   { value: "mlb", text: "MLB" },
@@ -15,13 +17,4 @@ const KEY = "listProduct";
 // get from localStorage
 const listProduct = JSON.parse(localStorage.getItem(KEY)) || [];
 
-export {
-  ADD_PRODUCT,
-  DELETE_PRODUCT,
-  SEARCH_PRODUCT,
-  UPDATE_PRODUCT,
-  FILTER_PRODUCT,
-  options,
-  listProduct,
-  KEY,
-};
+export { PRODUCT_ITEM, OPTION_BRAND, listProduct, KEY };

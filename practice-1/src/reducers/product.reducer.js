@@ -1,11 +1,4 @@
-import {
-  ADD_PRODUCT,
-  DELETE_PRODUCT,
-  UPDATE_PRODUCT,
-  SEARCH_PRODUCT,
-  FILTER_PRODUCT,
-  listProduct,
-} from "../constants/constants";
+import { PRODUCT_ITEM, listProduct } from "../constants/constants";
 import { saveLocalStorage } from "../utils/helper";
 // init state
 const initState = {
@@ -15,7 +8,7 @@ const initState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ADD_PRODUCT: {
+    case PRODUCT_ITEM.ADD: {
       const products = [...state.products, action.inputs];
       // save data to localStorage
       saveLocalStorage(products);
@@ -25,7 +18,7 @@ const reducer = (state, action) => {
       };
     }
 
-    case DELETE_PRODUCT: {
+    case PRODUCT_ITEM.DELETE: {
       // Delete by id
       const filtered = state.products.filter(
         (product) => product.id !== action.id
@@ -37,7 +30,7 @@ const reducer = (state, action) => {
       };
     }
 
-    case UPDATE_PRODUCT: {
+    case PRODUCT_ITEM.UPDATE: {
       const updatedProduct = action.item;
       const updatedProducts = state.products.map((product) =>
         product.id === updatedProduct.id ? updatedProduct : product
@@ -50,7 +43,7 @@ const reducer = (state, action) => {
       };
     }
 
-    case SEARCH_PRODUCT: {
+    case PRODUCT_ITEM.SEARCH: {
       return {
         ...state,
         // convert to lowcase
@@ -63,7 +56,7 @@ const reducer = (state, action) => {
       };
     }
 
-    case FILTER_PRODUCT: {
+    case PRODUCT_ITEM.FILTER: {
       const listChecked = action.brand;
       // check includes brand is true,then filter items
       const filterList = state.products.filter((item) =>

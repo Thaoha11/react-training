@@ -1,32 +1,26 @@
-import {
-  ADD_PRODUCT,
-  DELETE_PRODUCT,
-  SEARCH_PRODUCT,
-  UPDATE_PRODUCT,
-  FILTER_PRODUCT,
-} from "../constants/constants";
+import { PRODUCT_ITEM } from "../constants/constants";
 
 const addProduct = (inputs) => ({
-  type: ADD_PRODUCT,
+  type: PRODUCT_ITEM.ADD,
   inputs,
 });
 
 const deleteProduct = (id) => ({
-  type: DELETE_PRODUCT,
+  type: PRODUCT_ITEM.DELETE,
   id,
 });
 
 const updateProduct = (item) => ({
-  type: UPDATE_PRODUCT,
+  type: PRODUCT_ITEM.UPDATE,
   item,
 });
 
 const searchProduct = (name) => ({
-  type: SEARCH_PRODUCT,
+  type: PRODUCT_ITEM.SEARCH,
   name,
 });
 const filterProduct = (brand) => ({
-  type: FILTER_PRODUCT,
+  type: PRODUCT_ITEM.FILTER,
   brand,
 });
 

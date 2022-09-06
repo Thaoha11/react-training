@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState, memo, useContext } from "react";
-import { options } from "../../../constants/constants";
+import { OPTION_BRAND } from "../../../constants/constants";
 import {
   ModalWrapper,
   Modal,
@@ -103,7 +103,7 @@ const Popup = ({ onClosePopup, text, defaultValue = {} }) => {
             value={inputs.brand || ""}
             onChange={handleChange}
           >
-            {options.map((option) => (
+            {OPTION_BRAND.map((option) => (
               <ValueOption key={option.value} value={option.value}>
                 {option.text}
               </ValueOption>
