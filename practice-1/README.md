@@ -58,22 +58,22 @@ git clone git@github.com:Thaoha11/react-training.git
 git checkout branch feature/practice-1
 ```
 
-- Step 2 :cd folder practice-1
+- Step 3 :cd folder practice-1
 
 ```bash
 cd practice-1
 ```
 
-- Step 3 :
+- Step 4 :
 
 ```bash
 npm i
 ```
 
-- Step 4 : run project
+- Step 5 : run project
 
 ```bash
 npm start
 ```
 
-- Step 5: Open http://localhost:3000/ in your browser to see the Web application.
+- Step 6: Open http://localhost:3000/ in your browser to see the Web application.
